@@ -21,6 +21,13 @@
     /* Meta Pixel Base Initialization */
     (function() {
       var cfg = window.SITE_CONFIG && window.SITE_CONFIG.pixel;
+      try {
+        var local = localStorage.getItem('SITE_CONFIG_1KONTENLAGI');
+        if (local) {
+          var parsed = JSON.parse(local);
+          if (parsed && parsed.pixel) cfg = parsed.pixel;
+        }
+      } catch(e) {}
       if (cfg && cfg.metaPixelId && cfg.metaPixelId.trim() !== '') {
         !function(f,b,e,v,n,t,s)
         {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -2208,6 +2215,16 @@
     /* ─── DYNAMIC PRICING, LINKS & META ADS PIXEL TRACKING ENGINE ─── */
     (function(){
       var cfg = window.SITE_CONFIG;
+      try {
+        var local = localStorage.getItem('SITE_CONFIG_1KONTENLAGI');
+        if (local) {
+          var parsed = JSON.parse(local);
+          if (parsed && parsed.pricing) {
+            cfg = parsed;
+            window.SITE_CONFIG = parsed;
+          }
+        }
+      } catch(e) {}
       if (!cfg) return;
 
       var p = cfg.pricing;

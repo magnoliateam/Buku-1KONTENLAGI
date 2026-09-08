@@ -1082,7 +1082,15 @@
     };
 
     function loadFormValues() {
-      const cfg = window.SITE_CONFIG || DEFAULT_CONFIG;
+      let cfg = window.SITE_CONFIG || DEFAULT_CONFIG;
+      try {
+        const local = localStorage.getItem('SITE_CONFIG_1KONTENLAGI');
+        if (local) {
+          const parsed = JSON.parse(local);
+          if (parsed && parsed.pricing) cfg = parsed;
+        }
+      } catch (e) {}
+
       const p = cfg.pricing || DEFAULT_CONFIG.pricing;
       const px = cfg.pixel || DEFAULT_CONFIG.pixel;
 
@@ -1175,6 +1183,11 @@ window.SITE_CONFIG = ${JSON.stringify(cfg, null, 2)};
       localStorage.setItem('gh_owner', owner);
       localStorage.setItem('gh_repo', repo);
       localStorage.setItem('gh_token', token);
+
+      const cfgObj = buildConfigObject();
+      // Simpan langsung ke localStorage agar preview browser lokal langsung terupdate instan!
+      localStorage.setItem('SITE_CONFIG_1KONTENLAGI', JSON.stringify(cfgObj));
+      window.SITE_CONFIG = cfgObj;
 
       const statusEl = document.getElementById('syncStatus');
       statusEl.style.display = 'block';
