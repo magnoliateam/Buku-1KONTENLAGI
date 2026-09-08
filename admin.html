@@ -1189,9 +1189,10 @@ window.SITE_CONFIG = ${JSON.stringify(cfg, null, 2)};
       try {
         // 1. Ambil SHA file yang ada
         let sha = null;
+        const authHeader = token.startsWith('github_pat_') ? ('Bearer ' + token) : ('token ' + token);
         const getRes = await fetch(apiUrl, {
           headers: {
-            'Authorization': 'token ' + token,
+            'Authorization': authHeader,
             'Accept': 'application/vnd.github.v3+json'
           }
         });
@@ -1205,7 +1206,7 @@ window.SITE_CONFIG = ${JSON.stringify(cfg, null, 2)};
         const putRes = await fetch(apiUrl, {
           method: 'PUT',
           headers: {
-            'Authorization': 'token ' + token,
+            'Authorization': authHeader,
             'Accept': 'application/vnd.github.v3+json',
             'Content-Type': 'application/json'
           },
