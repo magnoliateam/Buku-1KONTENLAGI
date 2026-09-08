@@ -1,6 +1,6 @@
 /**
  * CONFIGURASI DINAMIS - BUKU #1KONTENLAGI
- * Diperbarui otomatis dari Admin Panel pada 8/9/2026, 21.32.31
+ * Diperbarui otomatis dari Admin Panel pada 8/9/2026, 21.33.21
  */
 window.SITE_CONFIG = {
   "pricing": {
@@ -9,7 +9,7 @@ window.SITE_CONFIG = {
     "mainPriceNumber": "123.456",
     "currencyPrefix": "Rp",
     "instruction": "Klik tombol dibawah untuk Order Buku ↘",
-    "btnPhysicalText": "COBA BELI LAH COY",
+    "btnPhysicalText": "Order Buku Fisik Sekarang",
     "btnPhysicalUrl": "https://1kontenlagi.form.id/buku--1kontenlagi-",
     "btnEbookText": "Order Versi E-Book Sekarang",
     "btnEbookUrl": "https://1kontenlagi.form.id/buku--1kontenlagi-"
