@@ -1,0 +1,2188 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Buku 1KONTENLAGI</title>
+  <meta name="description" content="Buku teknik manipulasi otak manusia untuk mendapatkan views dan penjualan hanya dengan konten. By Aldio Ogut - Akademi Creator." />
+  <meta property="og:title" content="Buku 1KONTENLAGI" />
+  <meta property="og:description" content="Bikin Konten, 10K Followers Pertama, Dapetin Internet Money." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#121110" />
+  <link rel="icon" type="image/png" href="asset image/favicon.png" />
+  <link rel="apple-touch-icon" href="asset image/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;0,900;1,700;1,800;1,900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── RESET & DEFAULTS ────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #121110;
+      color: #e8e2da;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { 
+      display: block; 
+      width: 100%; 
+      height: auto; 
+      -webkit-user-drag: none; 
+      -khtml-user-drag: none; 
+      -moz-user-drag: none; 
+      -o-user-drag: none; 
+      user-drag: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      -webkit-touch-callout: none; /* Disable iOS hold to save */
+    }
+    a { text-decoration: none; color: inherit; }
+
+    /* ─── TOKENS (Akademi Creator & FastTrack Studio) ─── */
+    :root {
+      --blood:        #a03830;
+      --blood-b:      #c45040;
+      --blood-glow:   rgba(196,80,64,0.35);
+      --ink:          #121110;
+      --ink-up:       #191715;
+      --ink-card:     #1e1c19;
+      --ink-card-hi:  #24211e;
+      --paper:        #e8e2da;
+      --paper-dim:    #cfc8bf;
+      --muted:        #948d84;
+      --dim:          #5c5750;
+      --line:         rgba(232,220,206,0.11);
+      --line-hi:      rgba(232,220,206,0.22);
+      --line-red:     rgba(196,80,64,0.42);
+      --grad-btn:     linear-gradient(268deg, #a03830 17%, #c45040 95%);
+    }
+
+    /* ─── GRAIN TEXTURE (Akademi Creator signature) ───── */
+    body::after {
+      content: ''; position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      opacity: .026; pointer-events: none; z-index: 998;
+    }
+
+    /* ─── BLOOM PATTERN ────────────────────────────────── */
+    .bloom { position: relative; overflow: hidden; }
+    .bloom::before {
+      content: ''; position: absolute;
+      top: -120px; left: 50%; transform: translateX(-50%);
+      width: 720px; height: 420px; border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(196,80,64,.15) 0%, transparent 68%);
+      filter: blur(65px); pointer-events: none; z-index: 0;
+    }
+    .bloom > * { position: relative; z-index: 1; }
+
+    /* ─── TOP ANNOUNCEMENT BAR ─────────────────────────── */
+    .topbar {
+      background: linear-gradient(90deg, #160c0a 0%, #26130f 50%, #160c0a 100%);
+      border-bottom: 1px solid var(--line-red);
+      padding: 10px 20px; text-align: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px; color: var(--paper-dim); letter-spacing: .08em;
+    }
+    .topbar strong { color: #fff; font-weight: 700; }
+    .topbar .accent { color: var(--blood-b); font-weight: 700; }
+    .pdot {
+      display: inline-block; width: 6px; height: 6px;
+      border-radius: 50%; background: var(--blood-b);
+      margin-right: 8px; vertical-align: middle;
+      animation: pdot 2s ease-in-out infinite;
+    }
+    @keyframes pdot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.35;transform:scale(1.4)} }
+
+    /* ─── STICKY NAVIGATION ────────────────────────────── */
+    .nav {
+      position: sticky; top: 0; z-index: 200;
+      background: rgba(18,17,16,.94);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner {
+      max-width: 940px; margin: 0 auto;
+      padding: 14px 24px;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    }
+    .nav-brand { display: flex; align-items: center; gap: 12px; }
+    .nav-logo {
+      width: 32px; height: 32px; border-radius: 8px;
+      filter: invert(1) brightness(12); flex-shrink: 0;
+    }
+    .nav-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 22px; font-weight: 900; text-transform: uppercase;
+      letter-spacing: .04em; color: #fff; line-height: 1;
+    }
+    .nav-name span { color: var(--blood-b); }
+    .nav-cta {
+      background: var(--grad-btn); color: #fff;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: .12em; text-transform: uppercase;
+      padding: 10px 22px; border-radius: 8px;
+      transition: opacity .2s, transform .2s, box-shadow .2s;
+      white-space: nowrap; box-shadow: 0 4px 16px rgba(160,56,48,0.4);
+    }
+    .nav-cta:hover { opacity: .92; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(160,56,48,0.6); }
+
+    /* ─── LAYOUT CONTAINERS ────────────────────────────── */
+    .wrap { max-width: 820px; margin: 0 auto; padding: 0 24px; }
+    .sec  { padding: 88px 24px; }
+    .sec-sm { padding: 60px 24px; }
+
+    /* ─── KICKER BADGES (FastTrack pill style) ────────── */
+    .kicker {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px; font-weight: 700;
+      letter-spacing: .18em; text-transform: uppercase;
+      color: var(--blood-b);
+      background: rgba(196,80,64,.08);
+      border: 1px solid rgba(196,80,64,.28);
+      padding: 6px 16px; border-radius: 999px;
+      margin-bottom: 20px;
+    }
+    .kicker::before {
+      content: ''; width: 5px; height: 5px; border-radius: 50%;
+      background: var(--blood-b);
+    }
+    .kicker-center { display: flex; justify-content: center; }
+
+    /* ─── HEADINGS ─────────────────────────────────────── */
+    .hdg {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(2.6rem, 7.8vw, 4.4rem);
+      font-weight: 900; line-height: 0.98; text-transform: uppercase;
+      letter-spacing: -.01em; color: #ffffff; text-align: center; margin-bottom: 16px;
+    }
+    .hdg .r { color: var(--blood-b); }
+    .sub {
+      font-size: 15px; font-weight: 400; color: var(--muted);
+      text-align: center; line-height: 1.7;
+      max-width: 600px; margin: 0 auto 52px;
+    }
+
+    /* ─── HERO (#1KONTENLAGI) ──────────────────────────── */
+    .hero {
+      background: var(--ink);
+      padding: 52px 24px 40px;
+      text-align: center;
+    }
+    .hero-kicker-bar {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: rgba(196,80,64,.1);
+      border: 1px solid rgba(196,80,64,.35);
+      border-radius: 999px; padding: 6px 18px;
+      margin-bottom: 16px;
+    }
+    .hero-kicker-bar span {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px; font-weight: 700;
+      color: var(--paper); letter-spacing: .08em; text-transform: uppercase;
+    }
+    .hero-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(4.2rem, 15.5vw, 8.2rem);
+      font-weight: 900; line-height: .9;
+      letter-spacing: -.025em; text-transform: uppercase;
+      color: #fff; margin-bottom: 14px;
+    }
+    .hero-title .ac { color: var(--blood-b); }
+    .hero-sub {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(16px, 3.4vw, 20px);
+      font-weight: 600; line-height: 1.5;
+      color: var(--paper); max-width: 660px; margin: 0 auto 24px;
+      letter-spacing: -.01em;
+    }
+
+    /* ─── REAL BOOK MOCKUP IMAGE (UKURAN PROPORSI & JARAK PAS) ─── */
+    .book-mockup-container {
+      position: relative;
+      max-width: 520px;
+      margin: 0 auto 26px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .book-mockup-container::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 75%; height: 70%;
+      background: radial-gradient(ellipse, rgba(196,80,64,0.32) 0%, transparent 70%);
+      filter: blur(42px);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .book-real-mockup-img {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 500px;
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 16px 32px rgba(0,0,0,0.9)) drop-shadow(0 0 24px rgba(196,80,64,0.22));
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+      cursor: pointer;
+    }
+    .book-real-mockup-img:hover {
+      transform: translateY(-4px) scale(1.03);
+      filter: drop-shadow(0 24px 44px rgba(0,0,0,0.95)) drop-shadow(0 0 32px rgba(196,80,64,0.32));
+    }
+    @media (max-width: 640px) {
+      .book-mockup-container {
+        max-width: 440px;
+        margin: 0 auto 20px;
+      }
+      .book-real-mockup-img {
+        max-width: 420px;
+      }
+    }
+    @media (max-width: 480px) {
+      .book-mockup-container {
+        max-width: 350px;
+        margin: 0 auto 18px;
+      }
+      .book-real-mockup-img {
+        max-width: 330px;
+      }
+    }
+
+    /* ─── BACK-COVER QUOTE CARD (FastTrack glass card) ── */
+    .hero-quote-box {
+      max-width: 650px; margin: 0 auto 22px;
+      background: rgba(26,23,21,0.75);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--line-hi);
+      border-left: 3px solid var(--blood-b);
+      border-radius: 12px; padding: 22px 26px; text-align: left;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.6);
+      position: relative;
+      z-index: 2;
+    }
+    .hero-quote-box p {
+      font-size: 14px; font-weight: 300; line-height: 1.72;
+      color: #ded8ce; margin-bottom: 8px;
+    }
+    .hero-quote-box p:last-child { margin-bottom: 0; }
+    .hero-quote-author {
+      margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--line);
+      font-family: 'JetBrains Mono', monospace; font-size: 11px;
+      color: var(--blood-b); font-weight: 700; letter-spacing: .06em;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .hero-quote-author::before {
+      content: '—'; color: var(--dim);
+    }
+
+    /* ─── 5 KEUNGGULAN (Clean studio list with subtle numbers) */
+    .features-sec {
+      background: #0f0e0d;
+      border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+      padding: 68px 24px;
+    }
+    .feat-list {
+      display: flex; flex-direction: column; gap: 12px;
+      max-width: 680px; margin: 0 auto;
+    }
+    .feat-item {
+      display: flex; align-items: center; gap: 20px;
+      background: var(--ink-up);
+      border: 1px solid var(--line);
+      border-radius: 14px; padding: 18px 24px;
+      transition: transform .25s, border-color .25s, box-shadow .25s;
+    }
+    .feat-item:hover {
+      transform: translateX(4px);
+      border-color: var(--line-red);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    }
+    .feat-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px; font-weight: 700;
+      color: var(--blood-b);
+      background: rgba(196,80,64,.1);
+      border: 1px solid rgba(196,80,64,.3);
+      width: 34px; height: 34px; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .feat-text {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 15.5px; font-weight: 700;
+      color: #fff; line-height: 1.45; letter-spacing: -.01em;
+    }
+
+    /* ─── SECTION 2: 9 POIN ILMU DAGING WAGYU ─────────── */
+    .sec2-daging {
+      background: var(--ink);
+    }
+    .daging-box {
+      max-width: 760px; margin: 0 auto;
+      border: 1px solid var(--line-red);
+      border-radius: 20px;
+      padding: 40px 36px;
+      background: linear-gradient(180deg, #181614 0%, #121110 100%);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.85), 0 0 35px -12px var(--blood-glow);
+    }
+    @media (max-width: 540px) { .daging-box { padding: 26px 20px; } }
+    .daging-list {
+      display: flex; flex-direction: column; gap: 20px;
+    }
+    .daging-item {
+      display: flex; gap: 16px; align-items: flex-start;
+    }
+    /* Minimal circular marker (Akademi Creator dot) */
+    .daging-marker {
+      width: 22px; height: 22px; border-radius: 50%;
+      background: rgba(196,80,64,.15);
+      border: 1.5px solid var(--blood-b);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: 3px;
+    }
+    .daging-marker::after {
+      content: ''; width: 6px; height: 6px; border-radius: 50%;
+      background: #fff;
+    }
+    .daging-text {
+      font-size: 15px; font-weight: 400;
+      color: #e2ddd5; line-height: 1.65;
+    }
+    .red-pill-tag {
+      display: inline-block;
+      background: rgba(196,80,64,.16);
+      color: #ff9b8f;
+      border: 1px solid rgba(196,80,64,.4);
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 600; font-size: 13px;
+      padding: 3px 10px; border-radius: 6px;
+      margin-left: 4px;
+    }
+
+    /* ─── SECTION 3: UNTUK SIAPA BUKU INI? ────────────── */
+    .sec-target {
+      background: #0d0c0b;
+      border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+    }
+    .target-list {
+      display: flex; flex-direction: column; gap: 14px;
+      max-width: 760px; margin: 0 auto;
+    }
+    .target-card {
+      display: flex; gap: 22px; align-items: flex-start;
+      background: var(--ink-card);
+      border: 1px solid var(--line);
+      border-left: 3px solid var(--blood-b);
+      border-radius: 14px; padding: 22px 26px;
+      color: #fff; transition: transform .25s, border-color .25s, background .25s;
+    }
+    .target-card:hover {
+      transform: translateX(4px);
+      background: var(--ink-card-hi);
+      border-color: var(--line-red);
+    }
+    .target-index {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px; font-weight: 700;
+      color: var(--blood-b); opacity: .9;
+      padding-top: 2px;
+    }
+    .target-desc {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 15.5px; font-weight: 600;
+      line-height: 1.55; color: #f4ede4;
+    }
+    .target-desc em {
+      font-family: 'Inter', sans-serif;
+      font-size: 13.5px; font-weight: 300;
+      color: var(--muted); display: block;
+      margin-top: 5px; font-style: normal;
+    }
+
+    /* ─── SECTION 4: KENAPA BUKU INI BERBEDA? ─────────── */
+    .sec-different {
+      background: var(--ink);
+    }
+    .diff-box { max-width: 760px; margin: 0 auto; }
+    .diff-author-card {
+      background: var(--ink-up);
+      border: 1px solid var(--line-hi);
+      border-radius: 18px; overflow: hidden;
+      margin-bottom: 40px;
+      box-shadow: 0 16px 40px rgba(0,0,0,.6);
+    }
+    .diff-author-img {
+      width: 100%; height: auto; display: block;
+      max-height: 400px; object-fit: cover; object-position: center 20%;
+      border-bottom: 1px solid var(--line);
+    }
+    .diff-author-story {
+      padding: 30px 32px;
+      font-size: 15px; font-weight: 300; line-height: 1.8;
+      color: #ded8ce;
+    }
+    .diff-author-story strong { color: #fff; font-weight: 700; }
+    .diff-author-tag {
+      font-family: 'JetBrains Mono', monospace;
+      display: inline-block; font-size: 13px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.15);
+      padding: 1px 8px; border-radius: 4px; color: #fff;
+    }
+    .diff-badge-highlight {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: clamp(12.5px, 2.8vw, 15px);
+      font-weight: 700;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: var(--blood-b);
+      background: rgba(196,80,64,.09);
+      border: 1.5px solid rgba(196,80,64,.35);
+      padding: 9px 24px; border-radius: 999px;
+      box-shadow: 0 0 20px rgba(196,80,64,0.14);
+    }
+    .diff-badge-highlight::before {
+      content: ''; width: 6.5px; height: 6.5px; border-radius: 50%;
+      background: var(--blood-b);
+      box-shadow: 0 0 8px var(--blood-b);
+    }
+
+    .diff-3points {
+      display: flex; flex-direction: column; gap: 16px;
+    }
+    .diff-point-card {
+      display: flex; gap: 24px; align-items: flex-start;
+      background: var(--ink-card);
+      border: 1px solid var(--line);
+      border-radius: 16px; padding: 28px 30px;
+      color: #fff; transition: border-color .25s, transform .25s;
+    }
+    .diff-point-card:hover {
+      border-color: var(--line-red);
+      transform: translateY(-2px);
+    }
+    @media (max-width: 520px) { .diff-point-card { padding: 22px 20px; gap: 16px; } }
+    .diff-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 52px; font-weight: 900; line-height: .88;
+      color: var(--blood-b); min-width: 32px;
+    }
+    .diff-point-text {
+      font-size: 14.5px; font-weight: 300; line-height: 1.75;
+      color: #d6cfc7;
+    }
+    .diff-point-text strong {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 16.5px; font-weight: 700;
+      color: #ffffff; display: block; margin-bottom: 8px;
+      line-height: 1.4;
+    }
+
+
+
+
+    /* ─── SECTION 5: AUTO GULIR + SLIDE MANUAL INTERAKTIF ─── */
+    .slider-section {
+      background: #0d0c0b;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 88px 24px 84px;
+      overflow: hidden;
+    }
+    .multi-carousel-block {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto 60px;
+      position: relative;
+    }
+    .multi-carousel-block:last-child {
+      margin-bottom: 0;
+    }
+    .carousel-top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 8px;
+      margin-bottom: 16px;
+    }
+    .carousel-category-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: .16em; text-transform: uppercase;
+      color: var(--blood-b);
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .carousel-category-tag::before {
+      content: ''; width: 6px; height: 6px; border-radius: 50%;
+      background: var(--blood-b);
+    }
+    .carousel-viewport-multicard {
+      overflow-x: auto;
+      overflow-y: hidden;
+      width: 100%;
+      position: relative;
+      padding: 8px 0 16px;
+      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none; /* IE */
+      scroll-behavior: smooth;
+      mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
+      cursor: grab;
+    }
+    .carousel-viewport-multicard::-webkit-scrollbar {
+      display: none; /* Chrome, Safari */
+    }
+    .carousel-viewport-multicard:active {
+      cursor: grabbing;
+    }
+    .carousel-track-multicard {
+      display: flex;
+      gap: 20px;
+      width: max-content;
+      will-change: transform;
+    }
+
+    .c-card-slide {
+      /* Lebar card proporsional persis akademicreator.com */
+      width: 540px;
+      max-width: 82vw;
+      flex-shrink: 0;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #141210;
+      border: 1px solid rgba(232, 220, 206, 0.15);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.8);
+      transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+      user-select: none;
+    }
+    .c-card-slide:hover {
+      transform: translateY(-4px) scale(1.015);
+      border-color: var(--line-red);
+      box-shadow: 0 20px 45px rgba(0,0,0,0.9), 0 0 25px -8px var(--blood-glow);
+    }
+    .c-card-slide img {
+      width: 100%;
+      height: auto;
+      display: block;
+      pointer-events: none;
+    }
+
+    /* Tombol Panah Navigasi Manual Floating */
+    .carousel-nav-btn {
+      position: absolute;
+      top: 55%;
+      z-index: 25;
+      transform: translateY(-50%);
+      width: 46px; height: 46px; border-radius: 50%;
+      background: rgba(18,17,16,.94);
+      border: 1.5px solid var(--line-hi);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; color: #fff; font-size: 19px;
+      transition: background .2s, border-color .2s, transform .2s, box-shadow .2s;
+      backdrop-filter: blur(14px);
+      user-select: none;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.85);
+    }
+    .carousel-nav-btn:hover {
+      background: var(--blood);
+      border-color: var(--blood-b);
+      transform: translateY(-50%) scale(1.08);
+      box-shadow: 0 12px 30px rgba(196,80,64,0.6);
+    }
+    .carousel-nav-btn.prev { left: -20px; }
+    .carousel-nav-btn.next { right: -20px; }
+    @media (max-width: 800px) {
+      .carousel-nav-btn.prev { left: 6px; }
+      .carousel-nav-btn.next { right: 6px; }
+    }
+
+
+    /* ─── SECTION 6: PRICING (BERAPA HARGANYA?) ─────────── */
+    .pricing-sec {
+      background: var(--ink);
+      padding: 88px 24px; position: relative; overflow: hidden;
+    }
+    .pricing-sec::before {
+      content: ''; position: absolute; top: -100px; left: 50%;
+      transform: translateX(-50%);
+      width: 580px; height: 420px; border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(196,80,64,.15) 0%, transparent 68%);
+      filter: blur(55px); pointer-events: none;
+    }
+    .pricing-card-box {
+      max-width: 680px; margin: 0 auto;
+      background: linear-gradient(165deg, #1c1816 0%, #12100f 100%);
+      border: 1.5px solid var(--line-red);
+      border-radius: 24px; padding: 48px 36px;
+      text-align: center;
+      box-shadow: 0 24px 60px -12px rgba(0,0,0,.92), 0 0 40px -10px var(--blood-glow);
+      position: relative; z-index: 1;
+    }
+    @media (max-width: 520px) { .pricing-card-box { padding: 36px 22px; } }
+
+    /* Mockup Buku di dalam Pricing Card */
+    .pricing-mockup-wrap {
+      position: relative;
+      max-width: 440px;
+      margin: 4px auto 26px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .pricing-mockup-wrap::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 75%; height: 75%;
+      background: radial-gradient(ellipse, rgba(196,80,64,0.3) 0%, transparent 70%);
+      filter: blur(36px);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .pricing-mockup-img {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 390px;
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 16px 32px rgba(0,0,0,0.88)) drop-shadow(0 0 25px rgba(196,80,64,0.22));
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+      cursor: pointer;
+    }
+    .pricing-mockup-img:hover {
+      transform: translateY(-4px) scale(1.03);
+      filter: drop-shadow(0 22px 42px rgba(0,0,0,0.95)) drop-shadow(0 0 32px rgba(196,80,64,0.35));
+    }
+    @media (max-width: 520px) {
+      .pricing-mockup-wrap {
+        max-width: 320px;
+        margin: 0 auto 20px;
+      }
+      .pricing-mockup-img {
+        max-width: 300px;
+      }
+    }
+
+    .price-strike-box {
+      background: rgba(160,56,48,0.18);
+      border: 1px solid rgba(196,80,64,0.4);
+      color: #ff9d91;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 15px; font-weight: 600;
+      text-decoration: line-through;
+      padding: 8px 18px; border-radius: 8px;
+      display: inline-block; margin-bottom: 20px;
+    }
+    .price-big-number {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(4rem, 13vw, 6.2rem);
+      font-weight: 900; line-height: .95;
+      color: #ffffff; margin-bottom: 12px;
+      letter-spacing: -.02em;
+    }
+    .price-big-number span { color: var(--blood-b); }
+    .price-instruction {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px; font-weight: 500;
+      color: var(--muted); margin-bottom: 34px;
+      letter-spacing: .04em;
+    }
+
+    
+    /* ─── SECTION: INTIP ISI BUKU (BOOK PREVIEW CAROUSEL) ── */
+    .sec-preview {
+      background: #0f0e0d;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 88px 24px 84px;
+    }
+    .preview-carousel-wrap {
+      max-width: 960px; margin: 0 auto;
+      position: relative;
+    }
+    .preview-viewport {
+      overflow: hidden;
+      border-radius: 18px;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.85);
+      background: #141210;
+      border: 1px solid var(--line-red);
+    }
+    .preview-track {
+      display: flex;
+      transition: transform .5s cubic-bezier(.16,1,.3,1);
+      will-change: transform;
+    }
+    .preview-slide {
+      flex: 0 0 100%;
+      min-width: 100%;
+      box-sizing: border-box;
+      padding: 44px 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 480px;
+      background: radial-gradient(circle at top right, rgba(196,80,64,0.08) 0%, transparent 60%), #141210;
+      position: relative;
+    }
+    @media (max-width: 640px) {
+      .preview-slide { padding: 32px 24px; min-height: 440px; }
+    }
+    .preview-header-meta {
+      display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 18px; margin-bottom: 18px;
+    }
+    .preview-chapter-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px; font-weight: 700;
+      color: var(--blood-b); text-transform: uppercase;
+      letter-spacing: .16em;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .preview-chapter-badge::before {
+      content: ''; width: 6px; height: 6px; border-radius: 50%;
+      background: var(--blood-b);
+    }
+    .preview-page-indicator {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11.5px; font-weight: 600;
+      color: var(--dim); letter-spacing: .1em;
+    }
+    .preview-body-content {
+      flex: 1; display: flex; flex-direction: column; justify-content: center;
+      max-width: 760px;
+    }
+    .preview-chapter-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(2rem, 5.5vw, 3.2rem);
+      font-weight: 900; line-height: 1.05;
+      text-transform: uppercase; letter-spacing: -.01em;
+      color: #ffffff; margin-bottom: 16px;
+    }
+    .preview-chapter-title span { color: var(--blood-b); }
+    .preview-chapter-desc {
+      font-size: 15.5px; font-weight: 300; line-height: 1.8;
+      color: #cfc8bf; margin-bottom: 24px;
+    }
+    .preview-chapter-desc strong {
+      color: #fff; font-weight: 600;
+    }
+    .preview-highlight-pill {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(196,80,64,.1);
+      border: 1px solid rgba(196,80,64,.32);
+      border-radius: 8px; padding: 10px 18px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px; font-weight: 600; color: #ff9d91;
+      width: fit-content;
+    }
+    .preview-footer-note {
+      border-top: 1px solid var(--line);
+      padding-top: 18px; margin-top: 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: var(--dim);
+      letter-spacing: .06em;
+    }
+    .preview-footer-note strong { color: var(--muted); }
+
+    .prev-nav-btn {
+      position: absolute; top: 50%; z-index: 10;
+      transform: translateY(-50%);
+      width: 44px; height: 44px; border-radius: 50%;
+      background: rgba(18,17,16,.92);
+      border: 1px solid var(--line-hi);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; color: #fff; font-size: 18px;
+      transition: background .2s, border-color .2s, transform .2s;
+      backdrop-filter: blur(12px);
+      user-select: none;
+    }
+    .prev-nav-btn:hover {
+      background: var(--blood);
+      border-color: var(--blood-b);
+      transform: translateY(-50%) scale(1.06);
+    }
+    .prev-nav-btn.prev { left: -22px; }
+    .prev-nav-btn.next { right: -22px; }
+    @media (max-width: 680px) {
+      .prev-nav-btn.prev { left: 8px; }
+      .prev-nav-btn.next { right: 8px; }
+    }
+
+    .preview-dots {
+      display: flex; justify-content: center; flex-wrap: wrap; gap: 8px;
+      margin-top: 24px;
+    }
+    .p-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--line-hi); cursor: pointer;
+      transition: background .3s, transform .3s;
+    }
+    .p-dot.active {
+      background: var(--blood-b);
+      transform: scale(1.4);
+    }
+
+    
+    /* ─── HERO 2 BUTTONS (INTIP ISI BUKUNYA & ORDER SEKARANG) ─── */
+    .hero-action-btns {
+      display: flex; flex-direction: column; gap: 14px;
+      max-width: 520px; margin: 22px auto 0;
+      justify-content: center;
+    }
+    @media (min-width: 540px) {
+      .hero-action-btns { flex-direction: row; }
+    }
+    .hero-btn-preview {
+      flex: 1; display: flex; align-items: center; justify-content: center;
+      background: rgba(255,255,255,.05); color: #fff;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px; font-weight: 700;
+      letter-spacing: .08em; text-transform: uppercase;
+      padding: 14px 20px; border-radius: 10px;
+      border: 1.5px solid var(--line-hi);
+      text-align: center; cursor: pointer;
+      transition: transform .25s, border-color .25s, background .25s;
+    }
+    .hero-btn-preview:hover {
+      transform: translateY(-2px);
+      border-color: var(--blood-b);
+      background: rgba(196,80,64,.12);
+    }
+    .hero-btn-order {
+      flex: 1; display: flex; align-items: center; justify-content: center;
+      background: var(--grad-btn); color: #fff;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px; font-weight: 700;
+      letter-spacing: .08em; text-transform: uppercase;
+      padding: 14px 20px; border-radius: 10px;
+      text-align: center; cursor: pointer;
+      box-shadow: 0 8px 24px rgba(160,56,48,.5);
+      transition: transform .25s, box-shadow .25s, opacity .2s;
+      position: relative; overflow: hidden;
+    }
+    .hero-btn-order:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 32px rgba(160,56,48,.7);
+      opacity: .95;
+    }
+    .hero-btn-order::after {
+      content: ''; position: absolute; top: 0; left: -100%;
+      width: 60%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.22), transparent);
+      transform: skewX(-15deg);
+      animation: sheen 3.8s ease-in-out infinite;
+    }
+
+    /* ─── MARQUEE SHOWCASE (ALUMNI-ALUMNI FASTTRACK STYLE) ─── */
+    .alumni-showcase-container {
+      margin-top: 72px;
+      padding-top: 60px;
+      border-top: 1px solid var(--line);
+      position: relative;
+    }
+    .marquee-wrapper {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      padding: 16px 0;
+      mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+    }
+    .marquee-track {
+      display: flex;
+      gap: 16px;
+      width: max-content;
+      will-change: transform;
+    }
+    .marquee-track.track-1 {
+      animation: scrollLeft 45s linear infinite;
+    }
+    .marquee-track.track-2 {
+      animation: scrollRight 45s linear infinite;
+      margin-top: 16px;
+    }
+    .marquee-wrapper:hover .marquee-track {
+      animation-play-state: paused;
+    }
+
+    @keyframes scrollLeft {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    @keyframes scrollRight {
+      0% { transform: translateX(-50%); }
+      100% { transform: translateX(0); }
+    }
+
+    .alumni-card {
+      width: 220px;
+      height: 310px;
+      flex-shrink: 0;
+      border-radius: 14px;
+      background: #191715;
+      border: 1px solid var(--line);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      transition: transform .3s, border-color .3s, box-shadow .3s;
+      cursor: pointer;
+    }
+    .alumni-card:hover {
+      transform: translateY(-5px) scale(1.02);
+      border-color: var(--line-red);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.8), 0 0 20px -5px var(--blood-glow);
+    }
+    .alumni-card-header {
+      padding: 14px 14px 8px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .alumni-user-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px; font-weight: 700; color: #fff;
+    }
+    .alumni-handle-pill {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9.5px; font-weight: 600;
+      color: var(--blood-b); background: rgba(196,80,64,0.12);
+      border: 1px solid rgba(196,80,64,0.28);
+      padding: 2px 7px; border-radius: 4px;
+    }
+    .alumni-card-visual {
+      flex: 1;
+      margin: 0 12px;
+      border-radius: 8px;
+      background: linear-gradient(145deg, #24201d, #141210);
+      border: 1px dashed rgba(232,220,206,0.15);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .alumni-metric-number {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 34px; font-weight: 900;
+      color: #fff; line-height: 1;
+      letter-spacing: -.02em;
+    }
+    .alumni-metric-number span { color: var(--blood-b); }
+    .alumni-metric-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9.5px; font-weight: 600;
+      color: var(--muted); text-transform: uppercase;
+      letter-spacing: .08em; margin-top: 4px;
+    }
+    .alumni-card-footer {
+      padding: 10px 14px 12px;
+      border-top: 1px solid var(--line);
+      font-family: 'Inter', sans-serif;
+      font-size: 11px; font-weight: 300;
+      color: #b5ada2; line-height: 1.45;
+    }
+    .alumni-card-footer strong {
+      color: #fff; font-weight: 600;
+    }
+
+    /* ─── 2 TOMBOL ORDER ELEGAN ────────────────────────── */
+    .order-btns-container {
+      display: flex; flex-direction: column; gap: 14px;
+      max-width: 520px; margin: 0 auto;
+    }
+    @media (min-width: 560px) {
+      .order-btns-container { flex-direction: row; }
+    }
+    .btn-order-fisik {
+      flex: 1; display: flex; align-items: center; justify-content: center;
+      background: var(--grad-btn); color: #fff;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px; font-weight: 700;
+      letter-spacing: .08em; text-transform: uppercase;
+      padding: 16px 22px; border-radius: 10px;
+      text-align: center; cursor: pointer;
+      box-shadow: 0 8px 24px rgba(160,56,48,.5);
+      transition: transform .25s, box-shadow .25s, opacity .2s;
+      position: relative; overflow: hidden;
+    }
+    .btn-order-fisik:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 32px rgba(160,56,48,.7);
+      opacity: .95;
+    }
+    .btn-order-fisik::after {
+      content: ''; position: absolute; top: 0; left: -100%;
+      width: 60%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.22), transparent);
+      transform: skewX(-15deg);
+      animation: sheen 3.8s ease-in-out infinite;
+    }
+    @keyframes sheen { 0%{left:-100%} 30%{left:140%} 100%{left:140%} }
+
+    .btn-order-ebook {
+      flex: 1; display: flex; align-items: center; justify-content: center;
+      background: rgba(255,255,255,.04); color: #fff;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px; font-weight: 700;
+      letter-spacing: .08em; text-transform: uppercase;
+      padding: 16px 22px; border-radius: 10px;
+      border: 1px solid var(--line-hi);
+      text-align: center; cursor: pointer;
+      transition: transform .25s, border-color .25s, background .25s;
+    }
+    .btn-order-ebook:hover {
+      transform: translateY(-2px);
+      border-color: var(--blood-b);
+      background: rgba(196,80,64,.12);
+    }
+
+    /* ─── SECTION 7: FAQ ───────────────────────────────── */
+    .faq-sec {
+      background: #0f0e0d;
+      border-top: 1px solid var(--line);
+      padding: 80px 24px;
+    }
+    .faq-list {
+      display: flex; flex-direction: column; gap: 10px;
+      max-width: 760px; margin: 40px auto 0;
+    }
+    .faq-item {
+      background: var(--ink-card); border: 1px solid var(--line);
+      border-radius: 12px; overflow: hidden;
+      transition: border-color .25s;
+    }
+    .faq-item.open { border-color: var(--line-red); }
+    .faq-btn {
+      width: 100%; display: flex; align-items: center; justify-content: space-between;
+      gap: 16px; padding: 22px 24px;
+      background: none; border: none; cursor: pointer; text-align: left;
+    }
+    .faq-q {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 15.5px; font-weight: 600; color: #fff; line-height: 1.45;
+    }
+    @media (max-width: 480px) { .faq-q { font-size: 14.5px; } }
+    .faq-icon {
+      width: 26px; height: 26px; border-radius: 50%;
+      background: rgba(255,255,255,.06);
+      border: 1px solid var(--line);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; font-size: 15px; color: var(--paper-dim);
+      transition: transform .3s, background .25s, color .25s, border-color .25s;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .faq-item.open .faq-icon {
+      transform: rotate(45deg);
+      background: var(--blood);
+      border-color: var(--blood-b);
+      color: #fff;
+    }
+    .faq-ans {
+      max-height: 0; overflow: hidden;
+      transition: max-height .4s cubic-bezier(.16,1,.3,1);
+    }
+    .faq-item.open .faq-ans { max-height: 300px; }
+    .faq-ans-in {
+      padding: 18px 24px 24px;
+      font-size: 14.5px; font-weight: 300; color: #cfc8bf; line-height: 1.75;
+      border-top: 1px solid var(--line);
+    }
+    .faq-ans-in a { color: var(--blood-b); text-decoration: underline; font-weight: 500; }
+    .faq-ans-in a:hover { color: #fff; }
+
+    /* ─── FINAL CTA ────────────────────────────────────── */
+    .final-cta {
+      background: var(--ink);
+      padding: 72px 24px 84px; text-align: center;
+      border-top: 1px solid var(--line);
+    }
+    .final-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(2.8rem, 9vw, 5.2rem);
+      font-weight: 900; text-transform: uppercase; color: #fff;
+      line-height: .95; margin-bottom: 14px;
+    }
+    .final-title .r { color: var(--blood-b); }
+    .final-sub {
+      font-size: 15.5px; font-weight: 300; color: var(--muted);
+      margin-bottom: 40px; max-width: 560px; margin-left: auto; margin-right: auto;
+      line-height: 1.65;
+    }
+
+    /* ─── FOOTER ───────────────────────────────────────── */
+    .footer {
+      background: #080706; border-top: 1px solid var(--line);
+      padding: 40px 24px; text-align: center;
+    }
+    .footer-logo {
+      width: 36px; height: 36px;
+      filter: invert(1) brightness(10) opacity(.3);
+      margin: 0 auto 12px;
+    }
+    .footer-brand {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 22px; font-weight: 900; text-transform: uppercase;
+      color: var(--paper); letter-spacing: .04em;
+    }
+    .footer-brand span { color: var(--blood-b); }
+    .footer-copy {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px; color: var(--dim); margin-top: 10px;
+    }
+    .footer-copy a { color: var(--blood-b); }
+    .footer-copy a:hover { color: #fff; }
+
+    /* ─── RESPONSIVE RULES (AMAN JAYA: MOBILE, TABLET, DESKTOP) ─── */
+    @media (max-width: 768px) {
+      .sec, .sec-sm { padding: 60px 20px; }
+      .sec-preview { padding: 68px 18px 60px; }
+      .slider-section { padding: 56px 18px 60px; }
+      .preview-slide { padding: 34px 28px; min-height: 420px; }
+      .daging-box { padding: 30px 22px; }
+      .diff-author-story { padding: 24px 22px; }
+      .diff-point-card { padding: 24px 22px; }
+    }
+
+    @media (max-width: 540px) {
+      .sec, .sec-sm { padding: 50px 16px; }
+      .wrap { padding: 0 16px; }
+      .nav-inner { padding: 12px 16px; }
+      .nav-name { font-size: 19px; }
+      .nav-cta { font-size: 10px; padding: 8px 15px; }
+      
+      .hero { padding: 36px 14px 28px; }
+      .hero-title { font-size: clamp(3.2rem, 15vw, 4.5rem); margin-bottom: 16px; }
+      .hero-sub { font-size: 16px; margin-bottom: 32px; }
+      
+      .book-wrap { width: min(260px, 80vw); margin-bottom: 32px; }
+      .hero-quote-box { padding: 20px 18px; }
+      .hero-quote-box p { font-size: 13.5px; line-height: 1.7; }
+      
+      .feat-item { padding: 15px 16px; gap: 14px; }
+      .feat-text { font-size: 14px; }
+      
+      .daging-box { padding: 22px 16px; border-radius: 16px; }
+      .daging-text { font-size: 13.5px; }
+      .red-pill-tag { font-size: 12px; margin-top: 4px; display: inline-block; }
+      
+      .target-card { padding: 16px 18px; gap: 14px; border-radius: 12px; }
+      .target-desc { font-size: 14px; }
+      .target-desc em { font-size: 12.5px; }
+      
+      .diff-author-story { padding: 20px 16px; font-size: 14px; }
+      .diff-point-card { padding: 20px 16px; gap: 14px; }
+      .diff-num { font-size: 40px; }
+      .diff-point-text strong { font-size: 15px; }
+      .diff-point-text { font-size: 13.5px; }
+      
+      .preview-slide { padding: 26px 18px; min-height: 390px; }
+      .preview-chapter-title { font-size: 22px; }
+      .preview-chapter-desc { font-size: 13.5px; line-height: 1.65; }
+      .preview-highlight-pill { font-size: 11px; padding: 8px 12px; }
+      .preview-footer-note { flex-direction: column; gap: 6px; align-items: flex-start; }
+      
+      .slider-btn { width: 38px; height: 38px; font-size: 15px; }
+      .prev-nav-btn { width: 38px; height: 38px; font-size: 15px; }
+      
+      .pricing-card-box { padding: 32px 16px; border-radius: 18px; }
+      .price-big-number { font-size: 3.4rem; }
+      .btn-order-fisik, .btn-order-ebook { font-size: 11.5px; padding: 15px 16px; }
+      
+      .faq-btn { padding: 18px 18px; }
+      .faq-q { font-size: 14px; }
+      .faq-ans-in { padding: 14px 18px 18px; font-size: 13.5px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════════════════
+       STICKY NAVIGATION
+       ══════════════════════════════════════════════════════ -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="nav-brand">
+        <img src="asset image/favicon.png" alt="Akademi Creator Logo" class="nav-logo" />
+        <span class="nav-name">#1KONTEN<span>LAGI</span></span>
+      </div>
+      <a href="#order" class="nav-cta">Order Sekarang</a>
+    </div>
+  </nav>
+
+  <!-- ══════════════════════════════════════════════════════
+       SECTION 1: HERO (#1KONTENLAGI)
+       ══════════════════════════════════════════════════════ -->
+  <section class="hero bloom">
+    <div class="wrap">
+
+      <div class="hero-kicker-bar">
+        <span>Bikin Konten, 10K Followers Pertama, Dapetin Internet Money</span>
+      </div>
+
+      <h1 class="hero-title">
+        #1KONTEN<span class="ac">LAGI</span>
+      </h1>
+
+      <p class="hero-sub">
+        Buku teknik manipulasi otak manusia untuk mendapatkan views dan penjualan hanya dengan konten
+      </p>
+
+      <!-- Real Book Mockup Image -->
+      <div class="book-mockup-container">
+        <img 
+          src="asset image/MockUp 1KONTENLAGI.png" 
+          alt="Buku #1KONTENLAGI By Aldio Ogut Mockup" 
+          class="book-real-mockup-img" 
+        />
+      </div>
+
+      <!-- Sampul Belakang Buku (Copywriting Persis Aldio Ogut) -->
+      <div class="hero-quote-box">
+        <p>
+          "Buku ini saya buat untuk kalian bisa keluar dari jeratan hidup dari gaji ke gaji setiap bulannya melalui jalur content creator yang nanti ujungnya kalian bisa menghasilkan uang dari internet (Internet Money), sebagai pengganti pekerjaan utama atau pekerjaan sampingan."
+        </p>
+        <p>
+          "Saya percaya saudara saya setanah air bukanlah orang bodoh, banyak saya lihat pekerja keras, cerdas, hidupnya lurus, akan tetapi faktor-faktor eksternal yang membuat hidupnya kurang beruntung. Oleh karena itu saya membuat buku ini, dengan harapan menjadi salah satu alternatif jalan kalian bisa hidup layak."
+        </p>
+        <div class="hero-quote-author">
+          Aldio Ogut (@mudacumasekali)
+        </div>
+      </div>
+
+      <!-- 2 Tombol: Intip Isi Bukunya & Order Sekarang Bukunya -->
+      <div class="hero-action-btns">
+        <a href="#intip-isi-buku" class="hero-btn-preview">
+          Intip Isi Bukunya
+        </a>
+        <a href="#order" class="hero-btn-order">
+          Order Sekarang Bukunya
+        </a>
+      </div>
+
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       SECTION: 5 KEUNGGULAN (Header 2 Asli)
+       ══════════════════════════════════════════════════════ -->
+  <section class="features-sec">
+    <div class="wrap">
+      <div class="kicker-center">
+        <span class="kicker">Core Fundamentals</span>
+      </div>
+      <div class="feat-list">
+
+        <div class="feat-item">
+          <div class="feat-num">01</div>
+          <div class="feat-text">Sangat Cocok Untuk Pemula Yang Tidak Suka Ribet</div>
+        </div>
+
+        <div class="feat-item">
+          <div class="feat-num">02</div>
+          <div class="feat-text">9 Bab Ilmu Daging dan Lembar Kerja Siswa</div>
+        </div>
+
+        <div class="feat-item">
+          <div class="feat-num">03</div>
+          <div class="feat-text">Tulisan besar-besar mudah dibaca</div>
+        </div>
+
+        <div class="feat-item">
+          <div class="feat-num">04</div>
+          <div class="feat-text">Telah menghasilkan 300+ Creator followers diatas 10K</div>
+        </div>
+
+        <div class="feat-item">
+          <div class="feat-num">05</div>
+          <div class="feat-text">Bahasa simpel dan sederhana</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       SECTION 2: 9 POIN ILMU DAGING WAGYU
+       ══════════════════════════════════════════════════════ -->
+  <section class="sec sec2-daging">
+    <div class="wrap">
+      <div class="kicker-center">
+        <span class="kicker">Curriculum Overview</span>
+      </div>
+      <h2 class="hdg">
+        9 POIN ILMU DAGING WAGYU<br>
+        <span class="r">YANG AKAN KAMU PELAJARI DALAM 9 BAB.</span>
+      </h2>
+      <p class="sub">
+        Materi pondasi praktis yang langsung bisa dipraktekkan tanpa teori berbelit-belit.
+      </p>
+
+      <div class="daging-box">
+        <div class="daging-list">
+
+          <div class="daging-item">
+            <span class="daging-marker"></span>
+            <div class="daging-text">
+              Bisnis content creator -&gt; <span class="red-pill-tag">Cara bikin duit dari internet</span>
+            </div>
+          </div>
+
+          <div class="daging-item">
+            <span class="daging-marker"></span>
+            <div class="daging-text">
+              Mencari potensi topik konten yang cocok sesuai karaktermu sesuai takdir lahir
+            </div>
+          </div>
+
+          <div class="daging-item">
+            <span class="daging-marker"></span>
+            <div class="daging-text">
+              Audience Centric -&gt; <span class="red-pill-tag">Bikin konten apapun, untuk siapapun, di sosmed manapun, buat jualan apapun</span>
+            </div>
+          </div>
+
+          <div class="daging-item">
+            <span class="daging-marker"></span>
+            <div class="daging-text">
+              Cara algoritma bekerja -&gt; <span class="red-pill-tag">Biar konten bisa diboost algoritma</span>
+            </div>
+          </div>
+
+          <div class="daging-item">
+            <span class="daging-marker"></span>
+            <div class="daging-text">
+              Algoritma TikTok, Youtube, IG
+            </div>
+          </div>
+
+          <div class="daging-item">
+            <span class="daging-marker"></span>
+            <div class="daging-text">
+              Cara mengatasi sulit dapat ide konten -&gt; <span class="red-pill-tag">Mencari ide konten</span>
+            </div>
+          </div>
+
+          <div class="daging-item">
+            <span class="daging-marker"></span>
+            <div class="daging-text">
+              Storytelling -&gt; <span class="red-pill-tag">Bikin penonton terhanyut nonton kontenmu sampai selesai.</span>
+            </div>
+          </div>
+
+          <div class="daging-item">
+            <span class="daging-marker"></span>
+            <div class="daging-text">
+              Mengatasi tidak pede di depan kamera
+            </div>
+          </div>
+
+          <div class="daging-item">
+            <span class="daging-marker"></span>
+            <div class="daging-text">
+              Mengatasi sulit bicara di depan kamera (mendadak gagu)
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       SECTION 3: UNTUK SIAPA BUKU INI?
+       ══════════════════════════════════════════════════════ -->
+  <section class="sec sec-target">
+    <div class="wrap">
+      <div class="kicker-center">
+        <span class="kicker">Audience Persona</span>
+      </div>
+      <h2 class="hdg">UNTUK SIAPA <span class="r">BUKU INI?</span></h2>
+      <p class="sub">Apakah kalian termasuk salah satu dari mereka?</p>
+
+      <div class="target-list">
+
+        <div class="target-card">
+          <span class="target-index">01</span>
+          <div class="target-desc">
+            Orang yang mau punya followers banyak.
+          </div>
+        </div>
+
+        <div class="target-card">
+          <span class="target-index">02</span>
+          <div class="target-desc">
+            Bisnis owner yang mau naikin followers usaha atau personal
+            <em>(kasih ke team kalian, mereka yang belajar)</em>
+          </div>
+        </div>
+
+        <div class="target-card">
+          <span class="target-index">03</span>
+          <div class="target-desc">
+            Karyawan/PNS yang mau mulai bangun income tambahan diluar pekerjaan utama biar kalau di PHK ada cadangan.
+          </div>
+        </div>
+
+        <div class="target-card">
+          <span class="target-index">04</span>
+          <div class="target-desc">
+            Coach, motivator, trainer yang jago dipanggung tapi jelek di sosmed.
+            <em>Panggung dan sosmed adalah hal yang berbeda.</em>
+          </div>
+        </div>
+
+        <div class="target-card">
+          <span class="target-index">05</span>
+          <div class="target-desc">
+            Seorang ahli dalam bidang tertentu yang ingin hasilin duit dari keahliannya lewat internet
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       SECTION 4: KENAPA BUKU INI BERBEDA?
+       ══════════════════════════════════════════════════════ -->
+  <section class="sec sec-different">
+    <div class="wrap diff-box">
+      <div class="kicker-center">
+        <span class="kicker">Philosophy &amp; Method</span>
+      </div>
+      <h2 class="hdg">KENAPA BUKU INI <span class="r">BERBEDA?</span></h2>
+
+      <!-- Story Card Aldio Ogut dengan Foto Asli -->
+      <div class="diff-author-card">
+        <img src="asset image/Kenapa Berhenti NgeVape.00_00_00_08.Still002.png" alt="Aldio Ogut" class="diff-author-img" />
+        <div class="diff-author-story">
+          Hai saya <strong>Aldio Ogut</strong>, biasa dipanggil bang Ogut dari akun <span class="diff-author-tag">mudacumasekali</span>. Sebenarnya saya gak niat membuat buku, jualan saya adalah kelas <span class="diff-author-tag">Akademi Creator</span> yang harganya 3.5jt. Tapi saya lihat ternyata banyak yang butuh ilmu ini tapi masih belum ketemu rezekinya untuk join. Oleh karena itu tercipta buku <span class="diff-author-tag">#1kontenlagi</span> ini.
+        </div>
+      </div>
+
+      <div style="text-align:center; margin-bottom: 40px;">
+        <span class="diff-badge-highlight">
+          Ada 3 hal yang bikin buku ini berbeda
+        </span>
+      </div>
+
+      <!-- 3 Hal Pembeda -->
+      <div class="diff-3points">
+
+        <div class="diff-point-card">
+          <div class="diff-num">01</div>
+          <div class="diff-point-text">
+            <strong>Buku ini bukan cuman pengalaman tanpa dasar ilmu sainsnya.</strong>
+            Buku ini pakai disiplin ilmu psikologi, statistik, dan neuroscience. Ngaruhnya ilmu-ilmu yang ada pada buku ini tak lekang oleh waktu. Fundamental (pondasi) nya terbukti tahan dengan perubahan algoritma dari 2018 - sekarang. Karena algoritma boleh berubah, tapi otak manusia ya gitu-gitu saja dari zaman purba.
+          </div>
+        </div>
+
+        <div class="diff-point-card">
+          <div class="diff-num">02</div>
+          <div class="diff-point-text">
+            <strong>Buku ini menggunakan bahasa yang sederhana dan simpel, kalian seperti dijelaskan dengan bahasa anak TK.</strong>
+            Ini bisa terjadi karena background saya sudah kuliah S1 2x, S2 1x, dan pernah kerja di perusahaan konsultan manajemen multinasional, sehingga berbicara sederhana dan terstruktur adalah kelebihan saya.
+          </div>
+        </div>
+
+        <div class="diff-point-card">
+          <div class="diff-num">03</div>
+          <div class="diff-point-text">
+            <strong>Ada lembar kerja yang bisa kalian gunakan untuk isian perjalanan kontenmu.</strong>
+            Tetap harus dipraktekan, jangan sampai diisi doang dan jadi pajangan.
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       SECTION: INTIP ISI BUKU (PREVIEW SEBELUM ASSET GAMBAR)
+       ══════════════════════════════════════════════════════ -->
+  <section class="sec-preview" id="intip-isi-buku">
+    <div class="wrap" style="text-align:center; margin-bottom: 40px;">
+      <div class="kicker-center">
+        <span class="kicker">Inside The Playbook</span>
+      </div>
+      <h2 class="hdg">INTIP ISI <span class="r">BUKUNYA</span></h2>
+      <p class="sub" style="margin-bottom:0;">
+        Preview 10 bagian materi fundamental yang ada di dalam buku #1kontenlagi sebelum kamu membacanya secara utuh.
+      </p>
+    </div>
+
+    <div class="preview-carousel-wrap">
+      <button class="prev-nav-btn prev" id="pvPrev" aria-label="Previous Preview">&#8592;</button>
+      <button class="prev-nav-btn next" id="pvNext" aria-label="Next Preview">&#8594;</button>
+
+      <div class="preview-viewport">
+        <div class="preview-track" id="pvTrack">
+
+          <!-- Preview 1 -->
+          <div class="preview-slide">
+            <div class="preview-header-meta">
+              <div class="preview-chapter-badge">Bab 01 &bull; Fundamental</div>
+              <div class="preview-page-indicator">01 / 10</div>
+            </div>
+            <div class="preview-body-content">
+              <h3 class="preview-chapter-title">Bisnis Content Creator: <span>Cara Bikin Duit Dari Internet</span></h3>
+              <p class="preview-chapter-desc">
+                Membedah model bisnis creator modern dari nol. Bagaimana mengubah views menjadi <strong>cashflow nyata (Internet Money)</strong>, bukan cuma sekadar vanity metrics atau likes kosong.
+              </p>
+              <div class="preview-highlight-pill">
+                Fokus Materi: Monetisasi &bull; Revenue Model &bull; Digital Asset
+              </div>
+            </div>
+            <div class="preview-footer-note">
+              <span>Buku #1kontenlagi &bull; Aldio Ogut</span>
+              <strong>Edisi Cetak &amp; Digital</strong>
+            </div>
+          </div>
+
+          <!-- Preview 2 -->
+          <div class="preview-slide">
+            <div class="preview-header-meta">
+              <div class="preview-chapter-badge">Bab 02 &bull; Identity &amp; Niche</div>
+              <div class="preview-page-indicator">02 / 10</div>
+            </div>
+            <div class="preview-body-content">
+              <h3 class="preview-chapter-title">Mencari Potensi Topik Konten <span>Sesuai Karakter &amp; Takdir Lahir</span></h3>
+              <p class="preview-chapter-desc">
+                Framework otentik menemukan niche yang membuat kamu <strong>tidak pernah kehabisan energi saat bikin konten</strong>, selaras dengan kepribadian alami tanpa perlu berpura-pura menjadi orang lain.
+              </p>
+              <div class="preview-highlight-pill">
+                Fokus Materi: Niche Discovery &bull; Personal Authenticity &bull; Energy Alignment
+              </div>
+            </div>
+            <div class="preview-footer-note">
+              <span>Buku #1kontenlagi &bull; Aldio Ogut</span>
+              <strong>Edisi Cetak &amp; Digital</strong>
+            </div>
+          </div>
+
+          <!-- Preview 3 -->
+          <div class="preview-slide">
+            <div class="preview-header-meta">
+              <div class="preview-chapter-badge">Bab 03 &bull; Core Framework</div>
+              <div class="preview-page-indicator">03 / 10</div>
+            </div>
+            <div class="preview-body-content">
+              <h3 class="preview-chapter-title">Audience Centric: <span>Bikin Konten Apapun Buat Jualan Apapun</span></h3>
+              <p class="preview-chapter-desc">
+                Prinsip tertinggi dalam pembuatan konten. Berhenti memikirkan apa yang ingin kamu buat, dan mulailah memahami <strong>apa yang dibutuhkan dan dipikirkan oleh otak audiens</strong> kamu.
+              </p>
+              <div class="preview-highlight-pill">
+                Fokus Materi: Audience Psychology &bull; Empathy Mapping &bull; High Conversion
+              </div>
+            </div>
+            <div class="preview-footer-note">
+              <span>Buku #1kontenlagi &bull; Aldio Ogut</span>
+              <strong>Edisi Cetak &amp; Digital</strong>
+            </div>
+          </div>
+
+          <!-- Preview 4 -->
+          <div class="preview-slide">
+            <div class="preview-header-meta">
+              <div class="preview-chapter-badge">Bab 04 &bull; Platform Mechanics</div>
+              <div class="preview-page-indicator">04 / 10</div>
+            </div>
+            <div class="preview-body-content">
+              <h3 class="preview-chapter-title">Cara Algoritma Bekerja: <span>Biar Konten Diboost Algoritma</span></h3>
+              <p class="preview-chapter-desc">
+                Bongkar logika teknis di balik distribusi sistem rekomendasi. Pahami metrik retensi, sinyal interaksi, dan <strong>loop algoritma</strong> yang memicu konten disebarkan ke jutaan penonton baru.
+              </p>
+              <div class="preview-highlight-pill">
+                Fokus Materi: Retention Rate &bull; Completion Loop &bull; Organic Boost
+              </div>
+            </div>
+            <div class="preview-footer-note">
+              <span>Buku #1kontenlagi &bull; Aldio Ogut</span>
+              <strong>Edisi Cetak &amp; Digital</strong>
+            </div>
+          </div>
+
+          <!-- Preview 5 -->
+          <div class="preview-slide">
+            <div class="preview-header-meta">
+              <div class="preview-chapter-badge">Bab 05 &bull; Multi-Platform Masterclass</div>
+              <div class="preview-page-indicator">05 / 10</div>
+            </div>
+            <div class="preview-body-content">
+              <h3 class="preview-chapter-title">Bedah Karakter Algoritma: <span>TikTok, YouTube, &amp; Instagram</span></h3>
+              <p class="preview-chapter-desc">
+                Setiap platform punya DNA yang berbeda. Pelajari perbedaan perilaku pengguna TikTok (interest-graph), YouTube (search &amp; retention), serta Instagram (relationship-graph) dalam satu panduan komparatif.
+              </p>
+              <div class="preview-highlight-pill">
+                Fokus Materi: TikTok FYP &bull; YouTube CTR &bull; Instagram Reels System
+              </div>
+            </div>
+            <div class="preview-footer-note">
+              <span>Buku #1kontenlagi &bull; Aldio Ogut</span>
+              <strong>Edisi Cetak &amp; Digital</strong>
+            </div>
+          </div>
+
+          <!-- Preview 6 -->
+          <div class="preview-slide">
+            <div class="preview-header-meta">
+              <div class="preview-chapter-badge">Bab 06 &bull; Idea Engine</div>
+              <div class="preview-page-indicator">06 / 10</div>
+            </div>
+            <div class="preview-body-content">
+              <h3 class="preview-chapter-title">Mengatasi Sulit Dapat Ide: <span>Mesin Ide Konten Tak Terbatas</span></h3>
+              <p class="preview-chapter-desc">
+                Sistematisasi riset ide konten sehari-hari tanpa pernah mengalami writer's block. Formula mengekstrak pertanyaan, keluhan, dan rasa penasaran pasar menjadi puluhan draft video siap produksi.
+              </p>
+              <div class="preview-highlight-pill">
+                Fokus Materi: Idea Extraction &bull; Topic Stacking &bull; Content Pipeline
+              </div>
+            </div>
+            <div class="preview-footer-note">
+              <span>Buku #1kontenlagi &bull; Aldio Ogut</span>
+              <strong>Edisi Cetak &amp; Digital</strong>
+            </div>
+          </div>
+
+          <!-- Preview 7 -->
+          <div class="preview-slide">
+            <div class="preview-header-meta">
+              <div class="preview-chapter-badge">Bab 07 &bull; Narrative Mastery</div>
+              <div class="preview-page-indicator">07 / 10</div>
+            </div>
+            <div class="preview-body-content">
+              <h3 class="preview-chapter-title">Storytelling: <span>Bikin Penonton Terhanyut Sampai Selesai</span></h3>
+              <p class="preview-chapter-desc">
+                Struktur naskah video pendek yang mengunci fokus audiens dari detik pertama hingga call-to-action. Pola storytelling sederhana yang mengadopsi struktur neuro-emosional manusia.
+              </p>
+              <div class="preview-highlight-pill">
+                Fokus Materi: Hook Engineering &bull; Emotional Arc &bull; Retention Lock
+              </div>
+            </div>
+            <div class="preview-footer-note">
+              <span>Buku #1kontenlagi &bull; Aldio Ogut</span>
+              <strong>Edisi Cetak &amp; Digital</strong>
+            </div>
+          </div>
+
+          <!-- Preview 8 -->
+          <div class="preview-slide">
+            <div class="preview-header-meta">
+              <div class="preview-chapter-badge">Bab 08 &bull; Mental Breakthrough</div>
+              <div class="preview-page-indicator">08 / 10</div>
+            </div>
+            <div class="preview-body-content">
+              <h3 class="preview-chapter-title">Mengatasi Rasa Tidak Pede <span>Di Depan Lensa Kamera</span></h3>
+              <p class="preview-chapter-desc">
+                Menghancurkan sindrom takut dinilai orang lain, takut di-judge teman kantor atau keluarga. Panduan psikologis praktis untuk membangun keyakinan diri dan wibawa visual saat tampil di video.
+              </p>
+              <div class="preview-highlight-pill">
+                Fokus Materi: Camera Confidence &bull; Fear Overcoming &bull; Persona Building
+              </div>
+            </div>
+            <div class="preview-footer-note">
+              <span>Buku #1kontenlagi &bull; Aldio Ogut</span>
+              <strong>Edisi Cetak &amp; Digital</strong>
+            </div>
+          </div>
+
+          <!-- Preview 9 -->
+          <div class="preview-slide">
+            <div class="preview-header-meta">
+              <div class="preview-chapter-badge">Bab 09 &bull; Speaking Delivery</div>
+              <div class="preview-page-indicator">09 / 10</div>
+            </div>
+            <div class="preview-body-content">
+              <h3 class="preview-chapter-title">Mengatasi Sulit Bicara: <span>Hilangkan Rasa Gagap &amp; Blank</span></h3>
+              <p class="preview-chapter-desc">
+                Teknik berbicara terstruktur layaknya konsultan profesional tanpa harus menghafal teks kata per kata. Cara berbicara mengalir dengan ritme dan artikulasi yang meyakinkan penonton.
+              </p>
+              <div class="preview-highlight-pill">
+                Fokus Materi: Bullet Point Technique &bull; Speech Cadence &bull; Spontaneous Flow
+              </div>
+            </div>
+            <div class="preview-footer-note">
+              <span>Buku #1kontenlagi &bull; Aldio Ogut</span>
+              <strong>Edisi Cetak &amp; Digital</strong>
+            </div>
+          </div>
+
+          <!-- Preview 10 -->
+          <div class="preview-slide">
+            <div class="preview-header-meta">
+              <div class="preview-chapter-badge">Lembar Kerja &bull; Action Blueprint</div>
+              <div class="preview-page-indicator">10 / 10</div>
+            </div>
+            <div class="preview-body-content">
+              <h3 class="preview-chapter-title">Lembar Kerja Siswa: <span>Isian Perjalanan 10K Followers Pertama</span></h3>
+              <p class="preview-chapter-desc">
+                Buku ini bukan cuma teori pajangan. Disertai workbook langsung isi untuk mendokumentasikan riset topik, struktur hook, jadwal posting, dan evaluasi performa mingguan hingga tembus 10K followers.
+              </p>
+              <div class="preview-highlight-pill">
+                Fokus Materi: Practical Workbook &bull; Milestones Tracker &bull; 10K Execution Plan
+              </div>
+            </div>
+            <div class="preview-footer-note">
+              <span>Buku #1kontenlagi &bull; Aldio Ogut</span>
+              <strong>Edisi Cetak &amp; Digital</strong>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Dots Navigasi Preview -->
+      <div class="preview-dots" id="pvDots">
+        <span class="p-dot active" onclick="goToPreview(0)"></span>
+        <span class="p-dot" onclick="goToPreview(1)"></span>
+        <span class="p-dot" onclick="goToPreview(2)"></span>
+        <span class="p-dot" onclick="goToPreview(3)"></span>
+        <span class="p-dot" onclick="goToPreview(4)"></span>
+        <span class="p-dot" onclick="goToPreview(5)"></span>
+        <span class="p-dot" onclick="goToPreview(6)"></span>
+        <span class="p-dot" onclick="goToPreview(7)"></span>
+        <span class="p-dot" onclick="goToPreview(8)"></span>
+        <span class="p-dot" onclick="goToPreview(9)"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       SECTION 5: HASIL PENINGKATAN FOLLOWERS & PENDAPATAN ALUMNI
+       ══════════════════════════════════════════════════════ -->
+  <section class="slider-section">
+    <div class="wrap" style="text-align:center; margin-bottom: 28px;">
+      <h2 class="hdg" style="font-size: clamp(2.2rem, 6.8vw, 3.8rem); line-height: 1.05; margin-bottom: 12px;">
+        HASIL PENINGKATAN <span class="r">FOLLOWERS &amp;</span><br>
+        <span class="r">PENDAPATAN</span> YANG SUDAH PRAKTEKIN ILMUNYA
+      </h2>
+      <p class="sub" style="margin-bottom:0; font-family: 'JetBrains Mono', monospace; font-size: 14px; letter-spacing: .08em; text-transform: uppercase;">
+        KALIAN KAPAN NYUSUL?
+      </p>
+    </div>
+
+    <!-- ── CAROUSEL 1: HASIL PENINGKATAN FOLLOWERS (Auto-Scroll + Tombol Panah Manual) ── -->
+    <div class="multi-carousel-block" id="blockFollowers">
+      <div class="carousel-top-bar">
+        <span class="carousel-category-tag">Peningkatan Followers &amp; Audience</span>
+      </div>
+      <button class="carousel-nav-btn prev" id="btnFollowersPrev" aria-label="Slide Left">&#8592;</button>
+      <button class="carousel-nav-btn next" id="btnFollowersNext" aria-label="Slide Right">&#8594;</button>
+
+      <div class="carousel-viewport-multicard" id="viewportFollowers">
+        <div class="carousel-track-multicard">
+          
+          <div class="c-card-slide"><img src="asset image/testimoni fix/alumni-1.webp" alt="Testimoni Rizkysabroni +197K Followers" loading="lazy" /></div>
+          <div class="c-card-slide"><img src="asset image/testimoni fix/alumni-2.webp" alt="Testimoni johangarageofficial 247K Subscribers" loading="lazy" /></div>
+          <div class="c-card-slide"><img src="asset image/testimoni fix/alumni-3.webp" alt="Testimoni Faris Ahmad +289K Followers" loading="lazy" /></div>
+          <div class="c-card-slide"><img src="asset image/testimoni fix/alumni-4.webp" alt="Testimoni Jody Adit +1 Juta Followers" loading="lazy" /></div>
+          <div class="c-card-slide"><img src="asset image/testimoni fix/alumni-5.webp" alt="Testimoni Pakar Pajak +102K Followers" loading="lazy" /></div>
+          <div class="c-card-slide"><img src="asset image/testimoni fix/alumni-6.webp" alt="Testimoni Dimas Gepeto +102K Followers" loading="lazy" /></div>
+          <div class="c-card-slide"><img src="asset image/testimoni fix/alumni-7.webp" alt="Testimoni Yazid Cortuduo +405K Subscribers" loading="lazy" /></div>
+          
+          <div class="c-card-slide"><img src="asset image/testimoni fix/alumni-1.webp" alt="Testimoni Rizkysabroni +197K Followers" loading="lazy" /></div>
+          <div class="c-card-slide"><img src="asset image/testimoni fix/alumni-2.webp" alt="Testimoni johangarageofficial 247K Subscribers" loading="lazy" /></div>
+          <div class="c-card-slide"><img src="asset image/testimoni fix/alumni-3.webp" alt="Testimoni Faris Ahmad +289K Followers" loading="lazy" /></div>
+          <div class="c-card-slide"><img src="asset image/testimoni fix/alumni-4.webp" alt="Testimoni Jody Adit +1 Juta Followers" loading="lazy" /></div>
+          <div class="c-card-slide"><img src="asset image/testimoni fix/alumni-5.webp" alt="Testimoni Pakar Pajak +102K Followers" loading="lazy" /></div>
+          <div class="c-card-slide"><img src="asset image/testimoni fix/alumni-6.webp" alt="Testimoni Dimas Gepeto +102K Followers" loading="lazy" /></div>
+          <div class="c-card-slide"><img src="asset image/testimoni fix/alumni-7.webp" alt="Testimoni Yazid Cortuduo +405K Subscribers" loading="lazy" /></div>
+          
+          <div class="c-card-slide"><img src="asset image/testimoni fix/alumni-1.webp" alt="Testimoni Rizkysabroni +197K Followers" loading="lazy" /></div>
+          <div class="c-card-slide"><img src="asset image/testimoni fix/alumni-2.webp" alt="Testimoni johangarageofficial 247K Subscribers" loading="lazy" /></div>
+          <div class="c-card-slide"><img src="asset image/testimoni fix/alumni-3.webp" alt="Testimoni Faris Ahmad +289K Followers" loading="lazy" /></div>
+          <div class="c-card-slide"><img src="asset image/testimoni fix/alumni-4.webp" alt="Testimoni Jody Adit +1 Juta Followers" loading="lazy" /></div>
+          <div class="c-card-slide"><img src="asset image/testimoni fix/alumni-5.webp" alt="Testimoni Pakar Pajak +102K Followers" loading="lazy" /></div>
+          <div class="c-card-slide"><img src="asset image/testimoni fix/alumni-6.webp" alt="Testimoni Dimas Gepeto +102K Followers" loading="lazy" /></div>
+          <div class="c-card-slide"><img src="asset image/testimoni fix/alumni-7.webp" alt="Testimoni Yazid Cortuduo +405K Subscribers" loading="lazy" /></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── CAROUSEL 2: HASIL PENDAPATAN & OMZET (Auto-Scroll + Tombol Panah Manual) ── -->
+    <div class="multi-carousel-block" id="blockIncome">
+      <div class="carousel-top-bar">
+        <span class="carousel-category-tag">Peningkatan Pendapatan &amp; Monetisasi</span>
+      </div>
+      <button class="carousel-nav-btn prev" id="btnIncomePrev" aria-label="Slide Left">&#8592;</button>
+      <button class="carousel-nav-btn next" id="btnIncomeNext" aria-label="Slide Right">&#8594;</button>
+
+      <div class="carousel-viewport-multicard" id="viewportIncome">
+        <div class="carousel-track-multicard">
+          
+          <div class="c-card-slide"><img src="asset image/testimoni fix/1-fadli-digital.png" alt="Fadli Digital Dapat 115 Juta+" loading="lazy" /></div>
+          <div class="c-card-slide"><img src="asset image/testimoni fix/2-dimas-gepeto.png" alt="Dimas Gepeto Total Pendapatan 15 Juta" loading="lazy" /></div>
+          <div class="c-card-slide"><img src="asset image/testimoni fix/3-anwar-choladi.png" alt="Anwar Choladi Hasil Pendapatan" loading="lazy" /></div>
+          <div class="c-card-slide"><img src="asset image/testimoni fix/4-sholeh-terarabarab.png" alt="Sholeh Terarabarab Hasil Pendapatan" loading="lazy" /></div>
+          <div class="c-card-slide"><img src="asset image/testimoni fix/5-putri-mulia.png" alt="Putri Mulia Hasil Pendapatan" loading="lazy" /></div>
+          <div class="c-card-slide"><img src="asset image/testimoni fix/6-gio-maulana.png" alt="Gio Maulana Hasil Pendapatan" loading="lazy" /></div>
+          
+          <div class="c-card-slide"><img src="asset image/testimoni fix/1-fadli-digital.png" alt="Fadli Digital Dapat 115 Juta+" loading="lazy" /></div>
+          <div class="c-card-slide"><img src="asset image/testimoni fix/2-dimas-gepeto.png" alt="Dimas Gepeto Total Pendapatan 15 Juta" loading="lazy" /></div>
+          <div class="c-card-slide"><img src="asset image/testimoni fix/3-anwar-choladi.png" alt="Anwar Choladi Hasil Pendapatan" loading="lazy" /></div>
+          <div class="c-card-slide"><img src="asset image/testimoni fix/4-sholeh-terarabarab.png" alt="Sholeh Terarabarab Hasil Pendapatan" loading="lazy" /></div>
+          <div class="c-card-slide"><img src="asset image/testimoni fix/5-putri-mulia.png" alt="Putri Mulia Hasil Pendapatan" loading="lazy" /></div>
+          <div class="c-card-slide"><img src="asset image/testimoni fix/6-gio-maulana.png" alt="Gio Maulana Hasil Pendapatan" loading="lazy" /></div>
+          
+          <div class="c-card-slide"><img src="asset image/testimoni fix/1-fadli-digital.png" alt="Fadli Digital Dapat 115 Juta+" loading="lazy" /></div>
+          <div class="c-card-slide"><img src="asset image/testimoni fix/2-dimas-gepeto.png" alt="Dimas Gepeto Total Pendapatan 15 Juta" loading="lazy" /></div>
+          <div class="c-card-slide"><img src="asset image/testimoni fix/3-anwar-choladi.png" alt="Anwar Choladi Hasil Pendapatan" loading="lazy" /></div>
+          <div class="c-card-slide"><img src="asset image/testimoni fix/4-sholeh-terarabarab.png" alt="Sholeh Terarabarab Hasil Pendapatan" loading="lazy" /></div>
+          <div class="c-card-slide"><img src="asset image/testimoni fix/5-putri-mulia.png" alt="Putri Mulia Hasil Pendapatan" loading="lazy" /></div>
+          <div class="c-card-slide"><img src="asset image/testimoni fix/6-gio-maulana.png" alt="Gio Maulana Hasil Pendapatan" loading="lazy" /></div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       SECTION 6: PRICING (BERAPA HARGANYA?) + 2 TOMBOL ORDER
+       ══════════════════════════════════════════════════════ -->
+  <section class="pricing-sec" id="order">
+    <div class="pricing-card-box">
+      <div class="kicker-center">
+        <span class="kicker">Investment Value</span>
+      </div>
+      <h2 class="hdg" style="margin-bottom: 20px;">BERAPA <span class="r">HARGANYA?</span></h2>
+
+      <!-- Mockup Buku di dalam Box Pricing -->
+      <div class="pricing-mockup-wrap">
+        <img 
+          src="asset image/MockUp 1KONTENLAGI.png" 
+          alt="Buku #1KONTENLAGI By Aldio Ogut Mockup" 
+          class="pricing-mockup-img" 
+        />
+      </div>
+
+      <div class="price-strike-box">
+        Dari Rp399.000
+      </div>
+
+      <div class="price-big-number">
+        <span>Rp</span>123.456
+      </div>
+
+      <p class="price-instruction">
+        Klik tombol dibawah untuk Order Buku ↘
+      </p>
+
+      <!-- 2 ORDER BUTTONS ELEGAN -->
+      <div class="order-btns-container">
+        <a href="https://1kontenlagi.form.id/buku--1kontenlagi-" target="_blank" class="btn-order-fisik">
+          Order Buku Fisik Sekarang
+        </a>
+        <a href="https://1kontenlagi.form.id/buku--1kontenlagi-" target="_blank" class="btn-order-ebook">
+          Order Versi E-Book Sekarang
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       SECTION 7: FAQ (Frequently Asked Question)
+       ══════════════════════════════════════════════════════ -->
+  <section class="faq-sec">
+    <div class="wrap" style="text-align:center;">
+      <div class="kicker-center">
+        <span class="kicker">Knowledge Base</span>
+      </div>
+      <h2 class="hdg">Frequently Asked <span class="r">Question</span></h2>
+      <p class="sub">Pertanyaan yang sering ditanyakan seputar buku #1kontenlagi:</p>
+    </div>
+
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span class="faq-q">Apakah pemula cocok beli buku ini?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-ans">
+          <div class="faq-ans-in">
+            Ya! Buku ini didesain khusus untuk kamu yang baru mulai bikin konten.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span class="faq-q">Format buku ini apa?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-ans">
+          <div class="faq-ans-in">
+            Buku fisik, dikirimkan ke rumah seperti beli skin care online.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span class="faq-q">Apakah ada jaminan sukses setelah membaca buku ini?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-ans">
+          <div class="faq-ans-in">
+            Tidak ada karena kami tidak tahu rahasia Tuhan.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          <span class="faq-q">Apakah bisa berkonsultasi 1on1 setelah membaca buku ini?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-ans">
+          <div class="faq-ans-in">
+            Tidak, kalian bisa mendapatkan itu di VIP member Akademi Creator. Silahkan cek <a href="https://akademicreator.com/" target="_blank">akademicreator.com</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       FINAL CTA
+       ══════════════════════════════════════════════════════ -->
+  <section class="final-cta bloom">
+    <h2 class="final-title">#1KONTEN<span class="r">LAGI</span></h2>
+    <p class="final-sub">
+      Buku teknik manipulasi otak manusia untuk mendapatkan views dan penjualan hanya dengan konten.
+    </p>
+    <div class="order-btns-container">
+      <a href="https://1kontenlagi.form.id/buku--1kontenlagi-" target="_blank" class="btn-order-fisik">
+        Order Buku Fisik Sekarang
+      </a>
+      <a href="https://1kontenlagi.form.id/buku--1kontenlagi-" target="_blank" class="btn-order-ebook">
+        Order Versi E-Book Sekarang
+      </a>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+       FOOTER
+       ══════════════════════════════════════════════════════ -->
+  <footer class="footer">
+    <img src="asset image/favicon.png" alt="Akademi Creator Logo" class="footer-logo" />
+    <div class="footer-brand">#1KONTEN<span>LAGI</span></div>
+    <div class="footer-copy">
+      © 2026 Akademi Creator &nbsp;·&nbsp;
+      <a href="https://akademicreator.com/" target="_blank">akademicreator.com</a>
+    </div>
+  </footer>
+
+  <!-- ══════════════════════════════════════════════════════
+       SCRIPTS (FAQ & Slider)
+       ══════════════════════════════════════════════════════ -->
+  <script>
+    /* FAQ Accordion */
+    function toggleFaq(btn) {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    }
+
+    
+    
+    /* ─── CONTINUOUS AUTO-SCROLL + MANUAL NAVIGATION ENGINE ─── */
+    function setupContinuousCarousel(config) {
+      const viewport = document.getElementById(config.viewportId);
+      const prevBtn = document.getElementById(config.prevBtnId);
+      const nextBtn = document.getElementById(config.nextBtnId);
+      if (!viewport) return;
+
+      const track = viewport.querySelector('.carousel-track-multicard');
+      let speed = config.speed || 0.85; // Kecepatan scroll pixel per frame
+      let isPaused = false;
+      let rafId = null;
+
+      function step() {
+        if (!isPaused) {
+          viewport.scrollLeft += speed;
+          // Bila mencapai 2/3 dari track, reset seamless ke 1/3
+          const maxScroll = (track.scrollWidth - viewport.clientWidth) * 0.66;
+          const minScroll = (track.scrollWidth - viewport.clientWidth) * 0.33;
+          if (viewport.scrollLeft >= maxScroll) {
+            viewport.scrollLeft -= minScroll;
+          }
+        }
+        rafId = requestAnimationFrame(step);
+      }
+
+      // Mulai auto-scroll
+      rafId = requestAnimationFrame(step);
+
+      // Pause saat kursor diarahkan ke area slider
+      viewport.addEventListener('mouseenter', () => { isPaused = true; });
+      viewport.addEventListener('mouseleave', () => { isPaused = false; });
+
+      // Tombol manual navigasi panah
+      const scrollStep = 480;
+      if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+          isPaused = true;
+          viewport.scrollBy({ left: scrollStep, behavior: 'smooth' });
+          setTimeout(() => { isPaused = false; }, 2000);
+        });
+        nextBtn.addEventListener('mouseenter', () => { isPaused = true; });
+        nextBtn.addEventListener('mouseleave', () => { isPaused = false; });
+      }
+
+      if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+          isPaused = true;
+          viewport.scrollBy({ left: -scrollStep, behavior: 'smooth' });
+          setTimeout(() => { isPaused = false; }, 2000);
+        });
+        prevBtn.addEventListener('mouseenter', () => { isPaused = true; });
+        prevBtn.addEventListener('mouseleave', () => { isPaused = false; });
+      }
+
+      // Support drag mouse
+      let isMouseDown = false;
+      let startX, scrollStart;
+      viewport.addEventListener('mousedown', (e) => {
+        isMouseDown = true;
+        isPaused = true;
+        startX = e.pageX - viewport.offsetLeft;
+        scrollStart = viewport.scrollLeft;
+      });
+      window.addEventListener('mouseup', () => {
+        if (isMouseDown) {
+          isMouseDown = false;
+          setTimeout(() => { isPaused = false; }, 1000);
+        }
+      });
+      viewport.addEventListener('mousemove', (e) => {
+        if (!isMouseDown) return;
+        e.preventDefault();
+        const x = e.pageX - viewport.offsetLeft;
+        const walk = (x - startX) * 1.5;
+        viewport.scrollLeft = scrollStart - walk;
+      });
+
+      // Support touch drag di mobile
+      viewport.addEventListener('touchstart', () => { isPaused = true; }, { passive: true });
+      viewport.addEventListener('touchend', () => {
+        setTimeout(() => { isPaused = false; }, 1200);
+      }, { passive: true });
+    }
+
+    // Inisialisasi Carousel 1: Followers (kecepatan 0.85px per frame)
+    setupContinuousCarousel({
+      viewportId: 'viewportFollowers',
+      prevBtnId: 'btnFollowersPrev',
+      nextBtnId: 'btnFollowersNext',
+      speed: 0.85
+    });
+
+    // Inisialisasi Carousel 2: Pendapatan & Omzet (kecepatan 0.95px per frame)
+    setupContinuousCarousel({
+      viewportId: 'viewportIncome',
+      prevBtnId: 'btnIncomePrev',
+      nextBtnId: 'btnIncomeNext',
+      speed: 0.95
+    });
+
+
+    /* Preview Carousel logic (10 preview slides) */
+    (function(){
+      const track  = document.getElementById('pvTrack');
+      const dots   = document.querySelectorAll('.p-dot');
+      const TOTAL  = 10;
+      let   cur    = 0;
+      let   startX = 0;
+      let   isDrag = false;
+
+      function goToPreview(idx) {
+        cur = (idx + TOTAL) % TOTAL;
+        track.style.transform = 'translateX(-' + (cur * 100) + '%)';
+        dots.forEach((d, i) => d.classList.toggle('active', i === cur));
+      }
+      window.goToPreview = goToPreview;
+
+      const prevBtn = document.getElementById('pvPrev');
+      const nextBtn = document.getElementById('pvNext');
+      if (prevBtn) prevBtn.addEventListener('click', () => goToPreview(cur - 1));
+      if (nextBtn) nextBtn.addEventListener('click', () => goToPreview(cur + 1));
+
+      /* Touch support */
+      track.addEventListener('touchstart', function(e){
+        startX = e.touches[0].clientX;
+        isDrag = true;
+      }, {passive:true});
+      track.addEventListener('touchend', function(e){
+        if (!isDrag) return;
+        const dx = e.changedTouches[0].clientX - startX;
+        if (Math.abs(dx) > 40) goToPreview(cur + (dx < 0 ? 1 : -1));
+        isDrag = false;
+      }, {passive:true});
+
+      /* Mouse drag */
+      track.addEventListener('mousedown', function(e){
+        startX = e.clientX; isDrag = true;
+      });
+      track.addEventListener('mouseup', function(e){
+        if (!isDrag) return;
+        const dx = e.clientX - startX;
+        if (Math.abs(dx) > 40) goToPreview(cur + (dx < 0 ? 1 : -1));
+        isDrag = false;
+      });
+
+      goToPreview(0);
+    })();
+
+    /* ─── PROTEKSI ASET GAMBAR: ANTI-DRAG & ANTI-DOWNLOAD ─── */
+    (function(){
+      // Cegah klik kanan (contextmenu) pada semua gambar
+      document.addEventListener('contextmenu', function(e){
+        if (e.target.tagName === 'IMG' || e.target.closest('img')) {
+          e.preventDefault();
+          return false;
+        }
+      }, false);
+
+      // Cegah drag & drop gambar
+      document.addEventListener('dragstart', function(e){
+        if (e.target.tagName === 'IMG' || e.target.closest('img')) {
+          e.preventDefault();
+          return false;
+        }
+      }, false);
+
+      // Pasang atribut draggable=false pada semua tag img di dokumen
+      document.querySelectorAll('img').forEach(function(img){
+        img.setAttribute('draggable', 'false');
+        img.setAttribute('oncontextmenu', 'return false;');
+      });
+    })();
+
+  </script>
+
+</body>
+</html>
