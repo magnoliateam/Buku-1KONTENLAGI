@@ -15,6 +15,29 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;0,900;1,700;1,800;1,900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
 
+  <!-- DYNAMIC CONFIG & META PIXEL ENGINE -->
+  <script src="config.js"></script>
+  <script>
+    /* Meta Pixel Base Initialization */
+    (function() {
+      var cfg = window.SITE_CONFIG && window.SITE_CONFIG.pixel;
+      if (cfg && cfg.metaPixelId && cfg.metaPixelId.trim() !== '') {
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', cfg.metaPixelId.trim());
+        if (cfg.trackPageView !== false) {
+          fbq('track', 'PageView');
+        }
+      }
+    })();
+  </script>
+
   <style>
     /* ─── RESET & DEFAULTS ────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -1865,7 +1888,7 @@
       <div class="kicker-center">
         <span class="kicker">Investment Value</span>
       </div>
-      <h2 class="hdg" style="margin-bottom: 20px;">BERAPA <span class="r">HARGANYA?</span></h2>
+      <h2 class="hdg" id="dynPriceTitle" style="margin-bottom: 20px;">BERAPA <span class="r">HARGANYA?</span></h2>
 
       <!-- Mockup Buku di dalam Box Pricing -->
       <div class="pricing-mockup-wrap">
@@ -1876,15 +1899,15 @@
         />
       </div>
 
-      <div class="price-strike-box">
+      <div class="price-strike-box" id="dynPriceStrike">
         Dari Rp399.000
       </div>
 
-      <div class="price-big-number">
+      <div class="price-big-number" id="dynPriceNumber">
         <span>Rp</span>123.456
       </div>
 
-      <p class="price-instruction">
+      <p class="price-instruction" id="dynPriceInstruction">
         Klik tombol dibawah untuk Order Buku ↘
       </p>
 
@@ -2182,6 +2205,63 @@
       });
     })();
 
+    /* ─── DYNAMIC PRICING, LINKS & META ADS PIXEL TRACKING ENGINE ─── */
+    (function(){
+      var cfg = window.SITE_CONFIG;
+      if (!cfg) return;
+
+      var p = cfg.pricing;
+      if (p) {
+        var elTitle = document.getElementById('dynPriceTitle');
+        if (elTitle && p.title) elTitle.innerHTML = p.title;
+
+        var elStrike = document.getElementById('dynPriceStrike');
+        if (elStrike && p.strikePrice) elStrike.textContent = p.strikePrice;
+
+        var elNum = document.getElementById('dynPriceNumber');
+        if (elNum && p.mainPriceNumber) {
+          var prefix = p.currencyPrefix || 'Rp';
+          elNum.innerHTML = '<span>' + prefix + '</span>' + p.mainPriceNumber;
+        }
+
+        var elInst = document.getElementById('dynPriceInstruction');
+        if (elInst && p.instruction) elInst.textContent = p.instruction;
+
+        // Update all Physical Book buttons (Pricing & Final CTA)
+        if (p.btnPhysicalUrl) {
+          document.querySelectorAll('.btn-order-fisik').forEach(function(btn){
+            btn.href = p.btnPhysicalUrl;
+            if (p.btnPhysicalText) btn.textContent = p.btnPhysicalText;
+          });
+        }
+
+        // Update all E-Book buttons (Pricing & Final CTA)
+        if (p.btnEbookUrl) {
+          document.querySelectorAll('.btn-order-ebook').forEach(function(btn){
+            btn.href = p.btnEbookUrl;
+            if (p.btnEbookText) btn.textContent = p.btnEbookText;
+          });
+        }
+      }
+
+      // Meta Pixel Event Tracking on Order Clicks
+      var px = cfg.pixel;
+      if (px && px.metaPixelId && px.trackInitiateCheckout !== false) {
+        var orderLinks = document.querySelectorAll('.btn-order-fisik, .btn-order-ebook, .hero-btn-order, .nav-cta');
+        orderLinks.forEach(function(link){
+          link.addEventListener('click', function(){
+            if (typeof fbq === 'function') {
+              var btnType = link.classList.contains('btn-order-ebook') ? 'E-Book' : 'Buku Fisik';
+              fbq('track', 'InitiateCheckout', {
+                content_name: 'Buku 1KONTENLAGI (' + btnType + ')',
+                value: px.value || 123456,
+                currency: px.currency || 'IDR'
+              });
+            }
+          });
+        });
+      }
+    })();
   </script>
 
 </body>

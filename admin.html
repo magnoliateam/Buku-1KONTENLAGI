@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Panel - Buku #1KONTENLAGI</title>
+  <link rel="icon" type="image/png" href="asset image/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink: #121110;
+      --ink-card: #1a1715;
+      --ink-card-hi: #24201d;
+      --blood: #a03830;
+      --blood-b: #c45040;
+      --paper: #f4ede4;
+      --muted: #8e867c;
+      --line: rgba(232,220,206,0.12);
+      --line-hi: rgba(232,220,206,0.22);
+      --green: #2ecc71;
+    }
+    body {
+      background: #0c0b0a;
+      color: #e8e2da;
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── TOPBAR ─────────────────────────────────────── */
+    .admin-nav {
+      background: #141210;
+      border-bottom: 1px solid var(--line);
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .admin-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .admin-logo {
+      width: 28px; height: 28px;
+    }
+    .admin-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 20px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      color: #fff;
+    }
+    .admin-title span { color: var(--blood-b); }
+    .badge-admin {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 700;
+      background: rgba(196,80,64,0.15);
+      color: var(--blood-b);
+      border: 1px solid rgba(196,80,64,0.35);
+      padding: 3px 8px;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+    .admin-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .btn-view-site {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--paper);
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--line);
+      padding: 7px 14px;
+      border-radius: 6px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background .2s, border-color .2s;
+    }
+    .btn-view-site:hover {
+      background: rgba(255,255,255,0.12);
+      border-color: var(--line-hi);
+    }
+    .btn-logout {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      color: #ff887b;
+      background: transparent;
+      border: 1px solid rgba(196,80,64,0.3);
+      padding: 7px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background .2s;
+    }
+    .btn-logout:hover {
+      background: rgba(196,80,64,0.15);
+    }
+
+    /* ─── MAIN LAYOUT ────────────────────────────────── */
+    .admin-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 32px 24px;
+      width: 100%;
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 440px;
+      gap: 32px;
+      align-items: start;
+    }
+    @media (max-width: 992px) {
+      .admin-container { grid-template-columns: 1fr; }
+    }
+
+    /* ─── TABS ───────────────────────────────────────── */
+    .tab-bar {
+      display: flex;
+      gap: 8px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 24px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .04em;
+      padding: 10px 16px;
+      border-radius: 8px 8px 0 0;
+      cursor: pointer;
+      transition: color .2s, border-color .2s;
+      border-bottom: 2px solid transparent;
+      white-space: nowrap;
+    }
+    .tab-btn.active {
+      color: #fff;
+      border-bottom-color: var(--blood-b);
+      background: rgba(255,255,255,0.02);
+    }
+
+    /* ─── FORM CARD ──────────────────────────────────── */
+    .admin-card {
+      background: var(--ink-card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 24px;
+      box-shadow: 0 12px 32px rgba(0,0,0,0.5);
+    }
+    .admin-card-header {
+      margin-bottom: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .admin-card-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 22px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .02em;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .admin-card-title span { color: var(--blood-b); }
+    .admin-card-desc {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 4px;
+      line-height: 1.5;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-group:last-child {
+      margin-bottom: 0;
+    }
+    .form-label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--paper);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .form-label-hint {
+      font-size: 10.5px;
+      color: var(--muted);
+      text-transform: none;
+      font-weight: 400;
+    }
+    .form-input, .form-textarea {
+      width: 100%;
+      background: #0f0d0c;
+      border: 1.5px solid var(--line);
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      padding: 12px 16px;
+      border-radius: 10px;
+      outline: none;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .form-input:focus, .form-textarea:focus {
+      border-color: var(--blood-b);
+      box-shadow: 0 0 16px rgba(196,80,64,0.25);
+    }
+    .form-input-mono {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+    }
+    .form-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    @media (max-width: 600px) {
+      .form-grid-2 { grid-template-columns: 1fr; }
+    }
+
+    /* Toggle Switch */
+    .toggle-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+      background: #0f0d0c;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      margin-bottom: 12px;
+    }
+    .toggle-info strong {
+      display: block;
+      font-size: 13.5px;
+      color: #fff;
+      font-weight: 600;
+    }
+    .toggle-info small {
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 44px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+    .switch input { opacity: 0; width: 0; height: 0; }
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: #2a2522;
+      transition: .3s;
+      border-radius: 24px;
+    }
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 18px; width: 18px;
+      left: 3px; bottom: 3px;
+      background-color: white;
+      transition: .3s;
+      border-radius: 50%;
+    }
+    input:checked + .slider {
+      background-color: var(--blood-b);
+    }
+    input:checked + .slider:before {
+      transform: translateX(20px);
+    }
+
+    /* ─── ACTION BUTTONS BAR ─────────────────────────── */
+    .action-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+    }
+    .btn-primary {
+      flex: 1;
+      min-width: 180px;
+      background: linear-gradient(135deg, #c45040 0%, #a03830 100%);
+      color: #fff;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: 14px 22px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(160,56,48,0.4);
+      transition: transform .2s, box-shadow .2s, opacity .2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(160,56,48,0.6);
+      opacity: .95;
+    }
+    .btn-secondary {
+      background: rgba(255,255,255,0.06);
+      color: #fff;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 14px 18px;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      cursor: pointer;
+      transition: background .2s, border-color .2s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.12);
+      border-color: var(--line-hi);
+    }
+
+    /* ─── PREVIEW BOX (RIGHT SIDE) ───────────────────── */
+    .preview-sticky-wrap {
+      position: sticky;
+      top: 90px;
+    }
+    .preview-label-tag {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--blood-b);
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      margin-bottom: 12px;
+    }
+    .preview-label-tag::before {
+      content: ''; width: 6px; height: 6px; border-radius: 50%;
+      background: var(--blood-b);
+    }
+    .preview-box {
+      background: linear-gradient(165deg, #1c1816 0%, #12100f 100%);
+      border: 1.5px solid rgba(196,80,64,0.45);
+      border-radius: 20px;
+      padding: 28px 24px;
+      text-align: center;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.8), 0 0 30px rgba(196,80,64,0.15);
+      position: relative;
+    }
+    .pv-kicker {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9.5px; font-weight: 700;
+      letter-spacing: .15em; text-transform: uppercase;
+      color: var(--blood-b);
+      background: rgba(196,80,64,.08);
+      border: 1px solid rgba(196,80,64,.28);
+      padding: 4px 12px; border-radius: 999px;
+      margin-bottom: 12px;
+    }
+    .pv-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 900;
+      line-height: .98;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 14px;
+    }
+    .pv-title .r { color: var(--blood-b); }
+    .pv-mockup-img {
+      max-width: 220px;
+      margin: 0 auto 16px;
+      display: block;
+      filter: drop-shadow(0 10px 20px rgba(0,0,0,0.8));
+    }
+    .pv-strike {
+      background: rgba(160,56,48,0.18);
+      border: 1px solid rgba(196,80,64,0.4);
+      color: #ff9d91;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px; font-weight: 600;
+      text-decoration: line-through;
+      padding: 6px 14px; border-radius: 6px;
+      display: inline-block; margin-bottom: 12px;
+    }
+    .pv-price {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 3.4rem;
+      font-weight: 900;
+      line-height: .95;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .pv-price span { color: var(--blood-b); }
+    .pv-inst {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+    .pv-btn-fisik {
+      display: block;
+      background: linear-gradient(135deg, #c45040 0%, #a03830 100%);
+      color: #fff;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 12px;
+      border-radius: 8px;
+      margin-bottom: 8px;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+    .pv-btn-ebook {
+      display: block;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--line);
+      color: #fff;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 12px;
+      border-radius: 8px;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    /* ─── TOAST NOTIFICATION ─────────────────────────── */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #1e1b18;
+      border: 1.5px solid var(--line-hi);
+      padding: 16px 22px;
+      border-radius: 12px;
+      color: #fff;
+      font-size: 13.5px;
+      font-weight: 500;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.8);
+      transform: translateY(100px);
+      opacity: 0;
+      transition: transform .3s cubic-bezier(0.16,1,0.3,1), opacity .3s;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    .toast.success { border-color: #2ecc71; }
+    .toast.error { border-color: #e74c3c; }
+
+    /* ─── LOGIN GATE MODAL ───────────────────────────── */
+    .login-overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(12,11,10,0.92);
+      backdrop-filter: blur(14px);
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .login-box {
+      background: #181514;
+      border: 1.5px solid rgba(196,80,64,0.4);
+      border-radius: 20px;
+      padding: 36px 32px;
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.9), 0 0 40px rgba(196,80,64,0.2);
+    }
+    .login-box h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 28px;
+      font-weight: 900;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .login-box h2 span { color: var(--blood-b); }
+    .login-box p {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+    .login-input {
+      width: 100%;
+      background: #0f0d0c;
+      border: 1.5px solid var(--line);
+      color: #fff;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 18px;
+      letter-spacing: .2em;
+      text-align: center;
+      padding: 14px;
+      border-radius: 10px;
+      margin-bottom: 16px;
+      outline: none;
+    }
+    .login-input:focus {
+      border-color: var(--blood-b);
+      box-shadow: 0 0 16px rgba(196,80,64,0.3);
+    }
+    .login-btn {
+      width: 100%;
+      background: var(--blood-b);
+      color: #fff;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12.5px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 14px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      transition: background .2s;
+    }
+    .login-btn:hover {
+      background: var(--blood);
+    }
+    .login-err {
+      color: #ff7675;
+      font-size: 12px;
+      margin-top: 12px;
+      display: none;
+    }
+
+    /* Modal panduan GitHub Token */
+    .hint-box {
+      background: rgba(196,80,64,0.06);
+      border: 1px dashed rgba(196,80,64,0.3);
+      padding: 14px 18px;
+      border-radius: 10px;
+      margin-top: 14px;
+      font-size: 12px;
+      color: #cfc8bf;
+      line-height: 1.6;
+    }
+    .hint-box ol {
+      margin-left: 18px;
+      margin-top: 6px;
+    }
+    .hint-box a {
+      color: #ff887b;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- LOGIN GATE -->
+  <div class="login-overlay" id="loginOverlay">
+    <div class="login-box">
+      <img src="asset image/favicon.png" alt="Logo" style="width: 44px; height: 44px; margin: 0 auto 16px;" />
+      <h2>Admin <span>1KONTENLAGI</span></h2>
+      <p>Masukkan PIN Keamanan untuk membuka dashboard pengelola website.</p>
+      <input type="password" id="pinInput" class="login-input" placeholder="••••" maxlength="10" autofocus />
+      <button class="login-btn" onclick="checkPin()">Buka Dashboard</button>
+      <div id="loginErr" class="login-err">PIN yang kamu masukkan salah!</div>
+      <p style="font-size: 11px; color: #666; margin-top: 18px; margin-bottom: 0;">PIN default: <strong>1234</strong></p>
+    </div>
+  </div>
+
+  <!-- TOPBAR -->
+  <header class="admin-nav">
+    <div class="admin-brand">
+      <img src="asset image/favicon.png" alt="Logo" class="admin-logo" />
+      <div class="admin-title">#1KONTEN<span>LAGI</span></div>
+      <span class="badge-admin">Admin Dashboard</span>
+    </div>
+    <div class="admin-actions">
+      <a href="index.html" target="_blank" class="btn-view-site">
+        Lihat Landing Page ↗
+      </a>
+      <button class="btn-logout" onclick="logout()">Kunci</button>
+    </div>
+  </header>
+
+  <!-- MAIN CONTAINER -->
+  <main class="admin-container">
+
+    <!-- LEFT COLUMN: FORM SETTINGS -->
+    <div class="admin-main-col">
+
+      <!-- TABS -->
+      <div class="tab-bar">
+        <button class="tab-btn active" onclick="switchTab('pricingTab', this)">1. Harga &amp; Link Order</button>
+        <button class="tab-btn" onclick="switchTab('pixelTab', this)">2. Meta Ads Pixel</button>
+        <button class="tab-btn" onclick="switchTab('githubTab', this)">3. Auto-Push GitHub</button>
+        <button class="tab-btn" onclick="switchTab('securityTab', this)">4. Keamanan PIN</button>
+      </div>
+
+      <!-- TAB 1: PRICING & LINKS -->
+      <div id="pricingTab" class="tab-content">
+        <div class="admin-card">
+          <div class="admin-card-header">
+            <div>
+              <div class="admin-card-title">Teks &amp; Nominal <span>Harga</span></div>
+              <div class="admin-card-desc">Ubah judul, harga coret, harga diskon, dan teks petunjuk di section pricing.</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">
+              Judul Section
+              <span class="form-label-hint">HTML tag &lt;span class="r"&gt; untuk warna merah</span>
+            </label>
+            <input type="text" id="cfgTitle" class="form-input" oninput="updateLivePreview()" />
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label">Harga Coret</label>
+              <input type="text" id="cfgStrike" class="form-input form-input-mono" oninput="updateLivePreview()" placeholder="Dari Rp399.000" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Nominal Harga Utama</label>
+              <input type="text" id="cfgPriceNum" class="form-input form-input-mono" oninput="updateLivePreview()" placeholder="123.456" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Teks Petunjuk Tombol</label>
+            <input type="text" id="cfgInstruction" class="form-input" oninput="updateLivePreview()" placeholder="Klik tombol dibawah untuk Order Buku ↘" />
+          </div>
+        </div>
+
+        <div class="admin-card">
+          <div class="admin-card-header">
+            <div>
+              <div class="admin-card-title">Tombol &amp; Link <span>Order Checkout</span></div>
+              <div class="admin-card-desc">Atur nama tombol dan link form order (otomatis memperbarui seluruh landing page).</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Label Tombol Buku Fisik</label>
+            <input type="text" id="cfgBtnPhysText" class="form-input" oninput="updateLivePreview()" placeholder="Order Buku Fisik Sekarang" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Link URL Form Order Buku Fisik</label>
+            <input type="url" id="cfgBtnPhysUrl" class="form-input form-input-mono" placeholder="https://1kontenlagi.form.id/buku--1kontenlagi-" />
+          </div>
+
+          <hr style="border: none; border-top: 1px dashed var(--line); margin: 20px 0;" />
+
+          <div class="form-group">
+            <label class="form-label">Label Tombol E-Book</label>
+            <input type="text" id="cfgBtnEbookText" class="form-input" oninput="updateLivePreview()" placeholder="Order Versi E-Book Sekarang" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Link URL Form Order E-Book</label>
+            <input type="url" id="cfgBtnEbookUrl" class="form-input form-input-mono" placeholder="https://1kontenlagi.form.id/buku--1kontenlagi-" />
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 2: META ADS PIXEL -->
+      <div id="pixelTab" class="tab-content" style="display: none;">
+        <div class="admin-card">
+          <div class="admin-card-header">
+            <div>
+              <div class="admin-card-title">Meta Ads <span>Pixel Tracking</span></div>
+              <div class="admin-card-desc">Pasang ID Pixel dari Meta Events Manager (Facebook &amp; Instagram Ads).</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">
+              Meta Pixel ID
+              <span class="form-label-hint">Hanya ID angka, misal: 987654321012345</span>
+            </label>
+            <input type="text" id="cfgPixelId" class="form-input form-input-mono" placeholder="Contoh: 182749102938472" />
+          </div>
+
+          <div class="toggle-row">
+            <div class="toggle-info">
+              <strong>Track PageView Otomatis</strong>
+              <small>Mengirim event PageView setiap kali ada pengunjung membuka website</small>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="cfgTrackPageView" checked />
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="toggle-row">
+            <div class="toggle-info">
+              <strong>Track InitiateCheckout Saat Tombol Order Diklik</strong>
+              <small>Mengirim event InitiateCheckout beserta nilai harga saat pengunjung mengklik tombol Order</small>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="cfgTrackCheckout" checked />
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="hint-box">
+            💡 <strong>Info Cara Mendapatkan Meta Pixel ID:</strong>
+            <ol>
+              <li>Buka <a href="https://adsmanager.facebook.com/events_manager" target="_blank">Meta Events Manager</a>.</li>
+              <li>Pilih Data Sources &rarr; Pixel kamu.</li>
+              <li>Salin <strong>Pixel ID</strong> (kumpulan angka 15-16 digit) dan tempel di form atas.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 3: GITHUB AUTO-PUSH -->
+      <div id="githubTab" class="tab-content" style="display: none;">
+        <div class="admin-card">
+          <div class="admin-card-header">
+            <div>
+              <div class="admin-card-title">Sinkronisasi Otomatis <span>GitHub API</span></div>
+              <div class="admin-card-desc">Sekali setup Token, kamu bisa langsung simpan perubahan ke GitHub hanya dengan 1 klik dari HP atau laptop mana pun!</div>
+            </div>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label">GitHub Username / Owner</label>
+              <input type="text" id="ghOwner" class="form-input form-input-mono" value="magnoliateam" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Nama Repository</label>
+              <input type="text" id="ghRepo" class="form-input form-input-mono" value="Buku-1KONTENLAGI" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">
+              GitHub Personal Access Token (PAT)
+              <span class="form-label-hint">Hanya tersimpan di browser kamu</span>
+            </label>
+            <input type="password" id="ghToken" class="form-input form-input-mono" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" />
+          </div>
+
+          <div class="hint-box">
+            🚀 <strong>Cara Bikin GitHub Personal Access Token (Gratis &amp; Cepat 1 Menit):</strong>
+            <ol>
+              <li>Buka <a href="https://github.com/settings/tokens/new" target="_blank">GitHub Tokens Settings</a>.</li>
+              <li>Beri nama Note (misal: <em>Buku Admin</em>), pilih Expiration: <em>No expiration</em>.</li>
+              <li>Centang izin <strong>repo</strong> (Full control of private/public repositories).</li>
+              <li>Klik <strong>Generate token</strong> di bawah, lalu salin tokennya (awalan <code>ghp_...</code>) dan tempel di sini.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 4: SECURITY PIN -->
+      <div id="securityTab" class="tab-content" style="display: none;">
+        <div class="admin-card">
+          <div class="admin-card-header">
+            <div>
+              <div class="admin-card-title">Keamanan <span>PIN Akses</span></div>
+              <div class="admin-card-desc">Ubah PIN untuk mengunci akses halaman admin ini.</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">PIN Baru</label>
+            <input type="password" id="newPinInput" class="form-input form-input-mono" placeholder="Masukkan PIN baru" maxlength="12" />
+          </div>
+          <button type="button" class="btn-secondary" onclick="updatePin()">Simpan PIN Baru</button>
+        </div>
+      </div>
+
+      <!-- BOTTOM ACTION BAR -->
+      <div class="action-bar">
+        <button type="button" class="btn-primary" onclick="saveToGitHub()">
+          <span>🚀</span> Simpan &amp; Push ke GitHub
+        </button>
+        <button type="button" class="btn-secondary" onclick="downloadConfigFile()">
+          <span>💾</span> Download config.js
+        </button>
+        <button type="button" class="btn-secondary" onclick="copyConfigCode()">
+          <span>📋</span> Salin Kode
+        </button>
+        <button type="button" class="btn-secondary" onclick="resetToDefault()">
+          <span>↺</span> Reset Default
+        </button>
+      </div>
+
+      <div id="syncStatus" style="margin-top: 14px; font-size: 13px; font-family: 'JetBrains Mono', monospace; display: none;"></div>
+
+    </div>
+
+    <!-- RIGHT COLUMN: LIVE PREVIEW -->
+    <div class="admin-preview-col">
+      <div class="preview-sticky-wrap">
+        <div class="preview-label-tag">Live Preview (Kotak Pricing)</div>
+        <div class="preview-box">
+          <div class="pv-kicker">Investment Value</div>
+          <div class="pv-title" id="pvTitle">BERAPA <span class="r">HARGANYA?</span></div>
+          <img src="asset image/MockUp 1KONTENLAGI.png" alt="Mockup" class="pv-mockup-img" />
+          <div class="pv-strike" id="pvStrike">Dari Rp399.000</div>
+          <div class="pv-price" id="pvPrice"><span>Rp</span>123.456</div>
+          <div class="pv-inst" id="pvInst">Klik tombol dibawah untuk Order Buku ↘</div>
+          <a href="#" class="pv-btn-fisik" id="pvBtnFisik">Order Buku Fisik Sekarang</a>
+          <a href="#" class="pv-btn-ebook" id="pvBtnEbook">Order Versi E-Book Sekarang</a>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- TOAST -->
+  <div id="toast" class="toast">
+    <span id="toastIcon">✓</span>
+    <span id="toastMsg">Pengaturan berhasil disimpan!</span>
+  </div>
+
+  <script src="config.js"></script>
+  <script>
+    // ─── PIN SECURITY ──────────────────────────────────
+    function getStoredPin() {
+      return localStorage.getItem('admin_pin_1kontenlagi') || '1234';
+    }
+    function checkPin() {
+      const entered = document.getElementById('pinInput').value.trim();
+      const actual = getStoredPin();
+      if (entered === actual) {
+        document.getElementById('loginOverlay').style.display = 'none';
+        sessionStorage.setItem('admin_logged_in', 'true');
+      } else {
+        document.getElementById('loginErr').style.display = 'block';
+        document.getElementById('pinInput').value = '';
+      }
+    }
+    document.getElementById('pinInput').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') checkPin();
+    });
+    if (sessionStorage.getItem('admin_logged_in') === 'true') {
+      document.getElementById('loginOverlay').style.display = 'none';
+    }
+    function logout() {
+      sessionStorage.removeItem('admin_logged_in');
+      location.reload();
+    }
+    function updatePin() {
+      const newPin = document.getElementById('newPinInput').value.trim();
+      if (!newPin) {
+        showToast('PIN tidak boleh kosong!', 'error');
+        return;
+      }
+      localStorage.setItem('admin_pin_1kontenlagi', newPin);
+      document.getElementById('newPinInput').value = '';
+      showToast('PIN berhasil diubah menjadi: ' + newPin, 'success');
+    }
+
+    // ─── TABS ──────────────────────────────────────────
+    function switchTab(tabId, btn) {
+      document.querySelectorAll('.tab-content').forEach(el => el.style.display = 'none');
+      document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+      document.getElementById(tabId).style.display = 'block';
+      btn.classList.add('active');
+    }
+
+    // ─── FORM POPULATION & LIVE PREVIEW ────────────────
+    const DEFAULT_CONFIG = {
+      pricing: {
+        title: 'BERAPA <span class="r">HARGANYA?</span>',
+        strikePrice: 'Dari Rp399.000',
+        mainPriceNumber: '123.456',
+        currencyPrefix: 'Rp',
+        instruction: 'Klik tombol dibawah untuk Order Buku ↘',
+        btnPhysicalText: 'Order Buku Fisik Sekarang',
+        btnPhysicalUrl: 'https://1kontenlagi.form.id/buku--1kontenlagi-',
+        btnEbookText: 'Order Versi E-Book Sekarang',
+        btnEbookUrl: 'https://1kontenlagi.form.id/buku--1kontenlagi-'
+      },
+      pixel: {
+        metaPixelId: '',
+        trackPageView: true,
+        trackInitiateCheckout: true,
+        value: 123456,
+        currency: 'IDR'
+      }
+    };
+
+    function loadFormValues() {
+      const cfg = window.SITE_CONFIG || DEFAULT_CONFIG;
+      const p = cfg.pricing || DEFAULT_CONFIG.pricing;
+      const px = cfg.pixel || DEFAULT_CONFIG.pixel;
+
+      document.getElementById('cfgTitle').value = p.title || DEFAULT_CONFIG.pricing.title;
+      document.getElementById('cfgStrike').value = p.strikePrice || DEFAULT_CONFIG.pricing.strikePrice;
+      document.getElementById('cfgPriceNum').value = p.mainPriceNumber || DEFAULT_CONFIG.pricing.mainPriceNumber;
+      document.getElementById('cfgInstruction').value = p.instruction || DEFAULT_CONFIG.pricing.instruction;
+      document.getElementById('cfgBtnPhysText').value = p.btnPhysicalText || DEFAULT_CONFIG.pricing.btnPhysicalText;
+      document.getElementById('cfgBtnPhysUrl').value = p.btnPhysicalUrl || DEFAULT_CONFIG.pricing.btnPhysicalUrl;
+      document.getElementById('cfgBtnEbookText').value = p.btnEbookText || DEFAULT_CONFIG.pricing.btnEbookText;
+      document.getElementById('cfgBtnEbookUrl').value = p.btnEbookUrl || DEFAULT_CONFIG.pricing.btnEbookUrl;
+
+      document.getElementById('cfgPixelId').value = px.metaPixelId || '';
+      document.getElementById('cfgTrackPageView').checked = px.trackPageView !== false;
+      document.getElementById('cfgTrackCheckout').checked = px.trackInitiateCheckout !== false;
+
+      // GitHub credentials from localStorage
+      document.getElementById('ghOwner').value = localStorage.getItem('gh_owner') || 'magnoliateam';
+      document.getElementById('ghRepo').value = localStorage.getItem('gh_repo') || 'Buku-1KONTENLAGI';
+      document.getElementById('ghToken').value = localStorage.getItem('gh_token') || '';
+
+      updateLivePreview();
+    }
+
+    function updateLivePreview() {
+      const title = document.getElementById('cfgTitle').value;
+      const strike = document.getElementById('cfgStrike').value;
+      const priceNum = document.getElementById('cfgPriceNum').value;
+      const inst = document.getElementById('cfgInstruction').value;
+      const btnPhys = document.getElementById('cfgBtnPhysText').value;
+      const btnEbook = document.getElementById('cfgBtnEbookText').value;
+
+      document.getElementById('pvTitle').innerHTML = title || 'BERAPA <span class="r">HARGANYA?</span>';
+      document.getElementById('pvStrike').textContent = strike || 'Dari Rp399.000';
+      document.getElementById('pvPrice').innerHTML = '<span>Rp</span>' + (priceNum || '123.456');
+      document.getElementById('pvInst').textContent = inst || 'Klik tombol dibawah untuk Order Buku ↘';
+      document.getElementById('pvBtnFisik').textContent = btnPhys || 'Order Buku Fisik Sekarang';
+      document.getElementById('pvBtnEbook').textContent = btnEbook || 'Order Versi E-Book Sekarang';
+    }
+
+    function buildConfigObject() {
+      const priceRaw = document.getElementById('cfgPriceNum').value.replace(/\D/g, '');
+      const priceVal = parseInt(priceRaw, 10) || 123456;
+
+      return {
+        pricing: {
+          title: document.getElementById('cfgTitle').value.trim(),
+          strikePrice: document.getElementById('cfgStrike').value.trim(),
+          mainPriceNumber: document.getElementById('cfgPriceNum').value.trim(),
+          currencyPrefix: 'Rp',
+          instruction: document.getElementById('cfgInstruction').value.trim(),
+          btnPhysicalText: document.getElementById('cfgBtnPhysText').value.trim(),
+          btnPhysicalUrl: document.getElementById('cfgBtnPhysUrl').value.trim(),
+          btnEbookText: document.getElementById('cfgBtnEbookText').value.trim(),
+          btnEbookUrl: document.getElementById('cfgBtnEbookUrl').value.trim()
+        },
+        pixel: {
+          metaPixelId: document.getElementById('cfgPixelId').value.trim(),
+          trackPageView: document.getElementById('cfgTrackPageView').checked,
+          trackInitiateCheckout: document.getElementById('cfgTrackCheckout').checked,
+          value: priceVal,
+          currency: 'IDR'
+        }
+      };
+    }
+
+    function buildConfigFileString(cfg) {
+      return `/**
+ * CONFIGURASI DINAMIS - BUKU #1KONTENLAGI
+ * Diperbarui otomatis dari Admin Panel pada ${new Date().toLocaleString('id-ID')}
+ */
+window.SITE_CONFIG = ${JSON.stringify(cfg, null, 2)};
+`;
+    }
+
+    // ─── GITHUB REST API AUTO COMMIT ───────────────────
+    async function saveToGitHub() {
+      const owner = document.getElementById('ghOwner').value.trim();
+      const repo = document.getElementById('ghRepo').value.trim();
+      const token = document.getElementById('ghToken').value.trim();
+
+      if (!token) {
+        switchTab('githubTab', document.querySelectorAll('.tab-btn')[2]);
+        showToast('Masukkan GitHub Token terlebih dahulu!', 'error');
+        document.getElementById('ghToken').focus();
+        return;
+      }
+
+      // Save token to localStorage for convenience
+      localStorage.setItem('gh_owner', owner);
+      localStorage.setItem('gh_repo', repo);
+      localStorage.setItem('gh_token', token);
+
+      const statusEl = document.getElementById('syncStatus');
+      statusEl.style.display = 'block';
+      statusEl.style.color = '#f39c12';
+      statusEl.textContent = '⏳ Menghubungi GitHub API & memeriksa file config.js...';
+
+      const cfgObj = buildConfigObject();
+      const fileContent = buildConfigFileString(cfgObj);
+      const filePath = 'config.js';
+      const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${filePath}`;
+
+      try {
+        // 1. Ambil SHA file yang ada
+        let sha = null;
+        const getRes = await fetch(apiUrl, {
+          headers: {
+            'Authorization': 'token ' + token,
+            'Accept': 'application/vnd.github.v3+json'
+          }
+        });
+        if (getRes.ok) {
+          const data = await getRes.json();
+          sha = data.sha;
+        }
+
+        // 2. Commit perubahan baru via PUT
+        statusEl.textContent = '⏳ Mengunggah commit ke repository GitHub...';
+        const putRes = await fetch(apiUrl, {
+          method: 'PUT',
+          headers: {
+            'Authorization': 'token ' + token,
+            'Accept': 'application/vnd.github.v3+json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            message: 'chore: update pricing, links, and pixel settings via Admin',
+            content: btoa(unescape(encodeURIComponent(fileContent))),
+            sha: sha || undefined
+          })
+        });
+
+        if (!putRes.ok) {
+          const errData = await putRes.json();
+          throw new Error(errData.message || 'Gagal menyimpan ke GitHub.');
+        }
+
+        statusEl.style.color = '#2ecc71';
+        statusEl.textContent = '✅ Berhasil disimpan & di-commit langsung ke GitHub! Website akan otomatis terupdate.';
+        showToast('Sukses! Perubahan berhasil di-push ke GitHub.', 'success');
+      } catch (err) {
+        console.error(err);
+        statusEl.style.color = '#e74c3c';
+        statusEl.textContent = '❌ Error: ' + err.message;
+        showToast('Gagal: ' + err.message, 'error');
+      }
+    }
+
+    // ─── DOWNLOAD & COPY FALLBACK ──────────────────────
+    function downloadConfigFile() {
+      const cfgObj = buildConfigObject();
+      const content = buildConfigFileString(cfgObj);
+      const blob = new Blob([content], { type: 'application/javascript;charset=utf-8;' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = 'config.js';
+      link.click();
+      showToast('File config.js berhasil di-download!', 'success');
+    }
+
+    function copyConfigCode() {
+      const cfgObj = buildConfigObject();
+      const content = buildConfigFileString(cfgObj);
+      navigator.clipboard.writeText(content).then(() => {
+        showToast('Kode config.js berhasil disalin ke clipboard!', 'success');
+      }).catch(() => {
+        showToast('Gagal menyalin kode.', 'error');
+      });
+    }
+
+    function resetToDefault() {
+      if (confirm('Apakah kamu yakin ingin mengembalikan semua ke pengaturan awal?')) {
+        window.SITE_CONFIG = DEFAULT_CONFIG;
+        loadFormValues();
+        showToast('Pengaturan telah di-reset ke nilai bawaan.', 'success');
+      }
+    }
+
+    // ─── TOAST NOTIFICATION ───────────────────────────
+    function showToast(msg, type = 'success') {
+      const t = document.getElementById('toast');
+      const icon = document.getElementById('toastIcon');
+      const text = document.getElementById('toastMsg');
+
+      t.className = 'toast ' + type + ' show';
+      icon.textContent = type === 'success' ? '✓' : '⚠️';
+      text.textContent = msg;
+
+      setTimeout(() => {
+        t.className = 'toast ' + type;
+      }, 3500);
+    }
+
+    // Init on load
+    window.addEventListener('DOMContentLoaded', loadFormValues);
+  </script>
+</body>
+</html>
