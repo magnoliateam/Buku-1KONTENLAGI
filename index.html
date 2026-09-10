@@ -2284,6 +2284,7 @@
 
   <!-- Prevent URL hash from showing in address bar when clicking anchor links -->
   <script>
+    // Guard 1: intercept all anchor clicks
     document.addEventListener('DOMContentLoaded', function() {
       document.querySelectorAll('a[href^="#"]').forEach(function(link) {
         link.addEventListener('click', function(e) {
@@ -2293,9 +2294,21 @@
           if (target) {
             target.scrollIntoView({ behavior: 'smooth', block: 'start' });
           }
+          // Immediately clean URL just in case
+          history.replaceState(null, '', window.location.pathname);
         });
       });
     });
+
+    // Guard 2: if hash somehow appears in URL, strip it immediately
+    window.addEventListener('hashchange', function() {
+      history.replaceState(null, '', window.location.pathname);
+    });
+
+    // Guard 3: on page load, strip any hash already in URL
+    if (window.location.hash) {
+      history.replaceState(null, '', window.location.pathname);
+    }
   </script>
 
 </body>
